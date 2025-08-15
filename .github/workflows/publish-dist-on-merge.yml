@@ -24,14 +24,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22.18.0 (with pnpm cache)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22.18.0
+          cache: 'pnpm'
+          # cache-dependency-path: 'pnpm-lock.yaml'  # uncomment if lockfile is not at repo root
 
-      - name: Install dependencies
-        run: npm i -g pnpm && pnpm i
+      - name: Set up pnpm 10.14.0
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+          run_install: false
+
+      - name: Install dependencies (pnpm)
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: npm run build

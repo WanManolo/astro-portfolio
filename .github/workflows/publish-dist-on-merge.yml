@@ -1,0 +1,75 @@
+name: Publish dist to WanManolo.github.io on PR merge to master
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [master]
+
+concurrency:
+  group: publish-dist-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    name: Build and publish dist
+    # Only run if the PR was merged (not just closed)
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # for checking out the source repo
+
+    steps:
+      - name: Check out source repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build
+        run: pnpm run build
+
+      # Check out the target GitHub Pages repo into a subfolder
+      - name: Check out target repo WanManolo.github.io
+        uses: actions/checkout@v4
+        with:
+          repository: wanmanolo/WanManolo.github.io
+          token: ${{ secrets.PUBLISH_TOKEN }}
+          path: out-repo
+
+      # Sync dist -> target repo root (deletes files in target that no longer exist in dist)
+      - name: Sync dist into target repo
+        run: |
+          rsync -av --delete dist/ out-repo/
+
+      - name: Configure Git identity
+        working-directory: out-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit changes if any
+        id: commit
+        working-directory: out-repo
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Publish from ${GITHUB_REPOSITORY}@${GITHUB_SHA} (PR merge to master)"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "No changes to commit"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push
+        if: steps.commit.outputs.changed == 'true'
+        working-directory: out-repo
+        run: |
+          git push origin HEAD:main || git push origin HEAD:master

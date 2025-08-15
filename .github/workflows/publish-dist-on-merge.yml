@@ -30,8 +30,22 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+<<<<<<< Updated upstream
       - name: Install dependencies
         run: npm i -g pnpm && pnpm i
+=======
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Activate pnpm 10.14.0
+        run: corepack prepare pnpm@10.14.0 --activate
+
+      - name: Verify pnpm
+        run: pnpm -v
+
+      - name: Install dependencies (pnpm)
+        run: pnpm install --frozen-lockfile
+>>>>>>> Stashed changes
 
       - name: Build
         run: npm run build

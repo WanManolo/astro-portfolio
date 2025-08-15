@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, Drawer } from 'antd';
-import {
-    TerminalIcon,
-    ShieldIcon,
-    CodeIcon,
-    ClockIcon,
-    MailIcon,
-    MenuIcon,
-    XIcon,
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Drawer } from 'antd';
+import { TerminalIcon, ShieldIcon, CodeIcon, ClockIcon, MailIcon, MenuIcon } from 'lucide-react';
 
 const menuItems = [
     { key: 'terminal', label: 'TERMINAL', icon: TerminalIcon, href: '#terminal' },
@@ -22,7 +14,7 @@ const menuItems = [
 export default function CyberNavigation() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('terminal');
+    const [activeSection, _setActiveSection] = useState('terminal');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -86,7 +78,7 @@ export default function CyberNavigation() {
 
                         {/* Status Indicator */}
                         <div className="tw:hidden tw:items-center tw:gap-2 tw:md:flex">
-                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
+                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full" />
                             <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">
                                 ONLINE
                             </span>
@@ -149,7 +141,7 @@ export default function CyberNavigation() {
 
                     <div className="neon-border tw:mt-8 tw:rounded tw:p-4">
                         <div className="tw:mb-2 tw:flex tw:items-center tw:gap-2">
-                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
+                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full" />
                             <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">
                                 STATUS
                             </span>

@@ -1,99 +1,96 @@
 import React from 'react';
 import { Timeline, Card } from 'antd';
 import { motion } from 'framer-motion';
-import {
-    ShieldIcon,
-    CodeIcon,
-    UsersIcon,
-    ServerIcon,
-    LockIcon,
-    ZapIcon
-} from 'lucide-react';
+import { ShieldIcon, CodeIcon, UsersIcon, ServerIcon, LockIcon, ZapIcon } from 'lucide-react';
 
 const experiences = [
     {
         year: '2023-Present',
         title: 'SENIOR_INFOSEC_MANAGER.EXE',
         company: '[CLASSIFIED_ENTERPRISE]',
-        description: 'Leading enterprise security initiatives, implementing zero-trust architecture, and managing cross-functional security teams across global infrastructure.',
+        description:
+            'Leading enterprise security initiatives, implementing zero-trust architecture, and managing cross-functional security teams across global infrastructure.',
         achievements: [
             'Reduced security incidents by 78%',
             'Implemented DevSecOps across 15+ teams',
             'Achieved SOC 2 Type II compliance',
-            'Led incident response for critical threats'
+            'Led incident response for critical threats',
         ],
         icon: ShieldIcon,
         color: '#00ff00',
-        status: 'ACTIVE'
+        status: 'ACTIVE',
     },
     {
         year: '2021-2023',
         title: 'SENIOR_FULLSTACK_ENGINEER.JS',
         company: '[TECH_CORPORATION]',
-        description: 'Architected and developed scalable web applications using modern frameworks, mentored development teams, and established security-first coding practices.',
+        description:
+            'Architected and developed scalable web applications using modern frameworks, mentored development teams, and established security-first coding practices.',
         achievements: [
             'Built applications serving 100K+ users',
             'Improved performance by 60%',
             'Mentored 8 junior developers',
-            'Implemented CI/CD security gates'
+            'Implemented CI/CD security gates',
         ],
         icon: CodeIcon,
         color: '#00d4ff',
-        status: 'COMPLETED'
+        status: 'COMPLETED',
     },
     {
         year: '2020-2021',
         title: 'INFORMATION_SECURITY_OFFICER.SH',
         company: '[FINTECH_STARTUP]',
-        description: 'Developed comprehensive security policies, conducted penetration testing, and ensured compliance with financial industry regulations.',
+        description:
+            'Developed comprehensive security policies, conducted penetration testing, and ensured compliance with financial industry regulations.',
         achievements: [
             'Established security framework from ground up',
             'Conducted 25+ penetration tests',
             'Achieved PCI DSS compliance',
-            'Reduced vulnerability exposure by 85%'
+            'Reduced vulnerability exposure by 85%',
         ],
         icon: LockIcon,
         color: '#bf00ff',
-        status: 'COMPLETED'
+        status: 'COMPLETED',
     },
     {
         year: '2019-2020',
         title: 'TECHNICAL_TEAM_LEAD.PY',
         company: '[SECURITY_CONSULTANCY]',
-        description: 'Led technical teams in security assessments, managed client relationships, and delivered comprehensive security solutions.',
+        description:
+            'Led technical teams in security assessments, managed client relationships, and delivered comprehensive security solutions.',
         achievements: [
             'Led team of 6 security analysts',
             'Delivered 40+ security assessments',
             'Increased client satisfaction by 45%',
-            'Developed automated testing tools'
+            'Developed automated testing tools',
         ],
         icon: UsersIcon,
         color: '#39ff14',
-        status: 'COMPLETED'
-    }
+        status: 'COMPLETED',
+    },
 ];
 
 export default function CyberTimeline() {
     return (
-        <section className="py-20 relative">
+        <section className="relative py-20">
             <div className="container mx-auto px-6">
-
                 <motion.div
-                    className="text-center mb-16"
+                    className="mb-16 text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-cyber uppercase text-neon-green glow-text mb-4">
+                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
                         CAREER_TIMELINE.LOG
                     </h2>
-                    <p className="text-xl text-gray-300 font-mono max-w-3xl mx-auto">
-                        <span className="text-neon-blue">[EXECUTING]</span> Professional journey through the cybersecurity landscape
+                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
+                        <span className="text-neon-blue">[EXECUTING]</span> Professional journey
+                        through the cybersecurity landscape
                     </p>
                 </motion.div>
 
-                <div className="max-w-4xl mx-auto">
+                <div className="mx-auto max-w-4xl">
                     <Timeline mode="left" className="cyber-timeline">
                         {experiences.map((exp, index) => {
                             const Icon = exp.icon;
@@ -102,10 +99,10 @@ export default function CyberTimeline() {
                                     key={index}
                                     dot={
                                         <motion.div
-                                            className="p-3 rounded-full border-2 bg-black/80"
+                                            className="rounded-full border-2 bg-black/80 p-3"
                                             style={{
                                                 borderColor: exp.color,
-                                                boxShadow: `0 0 20px ${exp.color}50`
+                                                boxShadow: `0 0 20px ${exp.color}50`,
                                             }}
                                             initial={{ scale: 0 }}
                                             whileInView={{ scale: 1 }}
@@ -113,7 +110,7 @@ export default function CyberTimeline() {
                                             viewport={{ once: true }}
                                         >
                                             <Icon
-                                                className="w-6 h-6"
+                                                className="h-6 w-6"
                                                 style={{ color: exp.color }}
                                             />
                                         </motion.div>
@@ -138,54 +135,58 @@ export default function CyberTimeline() {
                                         viewport={{ once: true }}
                                     >
                                         <Card
-                                            className="neon-border hover:shadow-2xl transition-all duration-300"
+                                            className="neon-border transition-all duration-300 hover:shadow-2xl"
                                             style={{
                                                 background: 'rgba(26, 26, 26, 0.9)',
                                                 border: `1px solid ${exp.color}`,
-                                                boxShadow: `0 0 20px ${exp.color}20`
+                                                boxShadow: `0 0 20px ${exp.color}20`,
                                             }}
                                         >
                                             <div className="space-y-4">
                                                 <div className="flex items-center justify-between">
-                                                    <h3 className="text-xl font-mono font-bold text-white">
+                                                    <h3 className="font-mono text-xl font-bold text-white">
                                                         {exp.title}
                                                     </h3>
                                                     <span
-                                                        className="px-3 py-1 rounded-full text-xs font-mono border"
+                                                        className="rounded-full border px-3 py-1 font-mono text-xs"
                                                         style={{
                                                             color: exp.color,
                                                             borderColor: exp.color,
-                                                            background: `${exp.color}20`
+                                                            background: `${exp.color}20`,
                                                         }}
                                                     >
-                            {exp.status}
-                          </span>
+                                                        {exp.status}
+                                                    </span>
                                                 </div>
 
-                                                <div className="text-gray-400 font-mono">
+                                                <div className="font-mono text-gray-400">
                                                     {exp.company}
                                                 </div>
 
-                                                <p className="text-gray-300 leading-relaxed">
+                                                <p className="leading-relaxed text-gray-300">
                                                     {exp.description}
                                                 </p>
 
                                                 <div className="space-y-2">
-                                                    <h4 className="text-sm font-mono font-bold text-white mb-2">
+                                                    <h4 className="mb-2 font-mono text-sm font-bold text-white">
                                                         KEY_ACHIEVEMENTS:
                                                     </h4>
-                                                    {exp.achievements.map((achievement, achIndex) => (
-                                                        <div
-                                                            key={achIndex}
-                                                            className="flex items-center gap-2 text-sm text-gray-300 font-mono"
-                                                        >
-                              <span
-                                  className="w-2 h-2 rounded-full"
-                                  style={{ background: exp.color }}
-                              ></span>
-                                                            {achievement}
-                                                        </div>
-                                                    ))}
+                                                    {exp.achievements.map(
+                                                        (achievement, achIndex) => (
+                                                            <div
+                                                                key={achIndex}
+                                                                className="flex items-center gap-2 font-mono text-sm text-gray-300"
+                                                            >
+                                                                <span
+                                                                    className="h-2 w-2 rounded-full"
+                                                                    style={{
+                                                                        background: exp.color,
+                                                                    }}
+                                                                ></span>
+                                                                {achievement}
+                                                            </div>
+                                                        )
+                                                    )}
                                                 </div>
                                             </div>
                                         </Card>

@@ -1,14 +1,7 @@
 import React from 'react';
 import { Card, Progress, Statistic, Row, Col } from 'antd';
 import { motion } from 'framer-motion';
-import {
-    ShieldCheckIcon,
-    BugIcon,
-    KeyIcon,
-    EyeIcon,
-    ServerIcon,
-    LockIcon
-} from 'lucide-react';
+import { ShieldCheckIcon, BugIcon, KeyIcon, EyeIcon, ServerIcon, LockIcon } from 'lucide-react';
 
 const securityMetrics = [
     {
@@ -16,21 +9,21 @@ const securityMetrics = [
         value: 127,
         icon: ShieldCheckIcon,
         color: '#00ff00',
-        description: 'Enterprise security assessments'
+        description: 'Enterprise security assessments',
     },
     {
         title: 'Vulnerabilities Identified',
         value: 2847,
         icon: BugIcon,
         color: '#ff4500',
-        description: 'Critical and high-risk findings'
+        description: 'Critical and high-risk findings',
     },
     {
         title: 'Security Policies Implemented',
         value: 45,
         icon: KeyIcon,
         color: '#00d4ff',
-        description: 'Organization-wide security frameworks'
+        description: 'Organization-wide security frameworks',
     },
     {
         title: 'Incident Response Time',
@@ -38,14 +31,14 @@ const securityMetrics = [
         suffix: '%',
         icon: EyeIcon,
         color: '#bf00ff',
-        description: 'SLA compliance rate'
+        description: 'SLA compliance rate',
     },
     {
         title: 'Systems Secured',
         value: 234,
         icon: ServerIcon,
         color: '#39ff14',
-        description: 'Infrastructure and applications'
+        description: 'Infrastructure and applications',
     },
     {
         title: 'Compliance Score',
@@ -53,8 +46,8 @@ const securityMetrics = [
         suffix: '%',
         icon: LockIcon,
         color: '#ffbf00',
-        description: 'ISO 27001 & SOC 2 alignment'
-    }
+        description: 'ISO 27001 & SOC 2 alignment',
+    },
 ];
 
 const skillLevels = [
@@ -68,21 +61,21 @@ const skillLevels = [
 
 export default function SecurityMatrix() {
     return (
-        <section className="py-20 relative">
+        <section className="relative py-20">
             <div className="container mx-auto px-6">
-
                 <motion.div
-                    className="text-center mb-16"
+                    className="mb-16 text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-cyber uppercase text-neon-green glow-text mb-4">
+                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
                         SECURITY_MATRIX.EXE
                     </h2>
-                    <p className="text-xl text-gray-300 font-mono max-w-3xl mx-auto">
-                        <span className="text-neon-blue">[ANALYZING]</span> Real-time security metrics and expertise evaluation
+                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
+                        <span className="text-neon-blue">[ANALYZING]</span> Real-time security
+                        metrics and expertise evaluation
                     </p>
                 </motion.div>
 
@@ -99,29 +92,29 @@ export default function SecurityMatrix() {
                                     viewport={{ once: true }}
                                 >
                                     <Card
-                                        className="h-full neon-border hover:shadow-2xl transition-all duration-300 group"
+                                        className="neon-border group h-full transition-all duration-300 hover:shadow-2xl"
                                         style={{
                                             background: 'rgba(26, 26, 26, 0.8)',
                                             border: `1px solid ${metric.color}`,
-                                            boxShadow: `0 0 20px ${metric.color}20`
+                                            boxShadow: `0 0 20px ${metric.color}20`,
                                         }}
                                     >
                                         <div className="flex items-start gap-4">
                                             <div
-                                                className="p-3 rounded-lg group-hover:animate-pulse"
+                                                className="rounded-lg p-3 group-hover:animate-pulse"
                                                 style={{ background: `${metric.color}20` }}
                                             >
                                                 <Icon
-                                                    className="w-8 h-8"
+                                                    className="h-8 w-8"
                                                     style={{ color: metric.color }}
                                                 />
                                             </div>
                                             <div className="flex-1">
                                                 <Statistic
                                                     title={
-                                                        <span className="font-mono text-gray-300 text-sm">
-                              {metric.title}
-                            </span>
+                                                        <span className="font-mono text-sm text-gray-300">
+                                                            {metric.title}
+                                                        </span>
                                                     }
                                                     value={metric.value}
                                                     suffix={metric.suffix}
@@ -130,10 +123,10 @@ export default function SecurityMatrix() {
                                                         fontFamily: 'JetBrains Mono, monospace',
                                                         fontSize: '1.8rem',
                                                         fontWeight: 'bold',
-                                                        textShadow: `0 0 10px ${metric.color}50`
+                                                        textShadow: `0 0 10px ${metric.color}50`,
                                                     }}
                                                 />
-                                                <p className="text-xs text-gray-400 font-mono mt-2">
+                                                <p className="mt-2 font-mono text-xs text-gray-400">
                                                     {metric.description}
                                                 </p>
                                             </div>
@@ -154,15 +147,15 @@ export default function SecurityMatrix() {
                 >
                     <Card
                         title={
-                            <span className="font-cyber text-xl text-neon-green glow-text uppercase">
-                EXPERTISE_LEVELS.JSON
-              </span>
+                            <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                                EXPERTISE_LEVELS.JSON
+                            </span>
                         }
                         className="neon-border"
                         style={{
                             background: 'rgba(26, 26, 26, 0.9)',
                             border: '1px solid #00ff00',
-                            boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)'
+                            boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)',
                         }}
                     >
                         <div className="space-y-6">
@@ -175,19 +168,19 @@ export default function SecurityMatrix() {
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
                                     viewport={{ once: true }}
                                 >
-                                    <div className="flex justify-between items-center">
-                    <span className="font-mono text-gray-300 text-sm">
-                      {skill.name}
-                    </span>
+                                    <div className="flex items-center justify-between">
+                                        <span className="font-mono text-sm text-gray-300">
+                                            {skill.name}
+                                        </span>
                                         <span
                                             className="font-mono text-sm font-bold"
                                             style={{
                                                 color: skill.color,
-                                                textShadow: `0 0 5px ${skill.color}50`
+                                                textShadow: `0 0 5px ${skill.color}50`,
                                             }}
                                         >
-                      {skill.level}%
-                    </span>
+                                            {skill.level}%
+                                        </span>
                                     </div>
                                     <Progress
                                         percent={skill.level}

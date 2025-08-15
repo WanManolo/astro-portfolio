@@ -1,0 +1,22 @@
+# dependencies & build output
+node_modules
+.dist
+.dist-ssr
+dist
+.cache
+coverage
+
+# common binary & generated assets
+public/assets
+**/*.min.*
+**/*.svg
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.webp
+**/*.ico
+**/*.md
+
+# project specifics (add if needed)
+# .astro/ (Astro v4+ internal cache if present)

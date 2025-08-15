@@ -9,7 +9,7 @@ import {
     SendIcon,
     MapPinIcon,
     PhoneIcon,
-    ClockIcon
+    ClockIcon,
 } from 'lucide-react';
 
 const { TextArea } = Input;
@@ -21,7 +21,7 @@ const contactChannels = [
         value: 'oneman.rt@gmail.com',
         description: 'Encrypted communication preferred',
         color: '#00ff00',
-        link: 'mailto:oneman.rt@gmail.com'
+        link: 'mailto:oneman.rt@gmail.com',
     },
     {
         icon: LinkedinIcon,
@@ -29,7 +29,7 @@ const contactChannels = [
         value: '/in/juanmartgr',
         description: 'Professional networking',
         color: '#00d4ff',
-        link: 'https://linkedin.com/in/juanmartgr'
+        link: 'https://linkedin.com/in/juanmartgr',
     },
     {
         icon: GithubIcon,
@@ -37,7 +37,7 @@ const contactChannels = [
         value: '/WanManolo',
         description: 'Open source contributions',
         color: '#bf00ff',
-        link: 'https://github.com/WanManolo'
+        link: 'https://github.com/WanManolo',
     },
     {
         icon: MapPinIcon,
@@ -45,7 +45,7 @@ const contactChannels = [
         value: 'Remote/Hybrid Available',
         description: 'Global collaboration ready',
         color: '#39ff14',
-        link: null
+        link: null,
     },
     {
         icon: ClockIcon,
@@ -53,7 +53,7 @@ const contactChannels = [
         value: '< 24 hours',
         description: 'Guaranteed response SLA',
         color: '#ffbf00',
-        link: null
+        link: null,
     },
     {
         icon: ShieldIcon,
@@ -61,8 +61,8 @@ const contactChannels = [
         value: 'Available for roles',
         description: 'InfoSec leadership positions',
         color: '#ff4500',
-        link: null
-    }
+        link: null,
+    },
 ];
 
 export default function HackerContact() {
@@ -75,7 +75,7 @@ export default function HackerContact() {
 
         try {
             // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
 
             // In a real app, you'd send this to your backend
             console.log('Form submitted:', values);
@@ -84,20 +84,19 @@ export default function HackerContact() {
                 content: 'MESSAGE_TRANSMITTED_SUCCESSFULLY',
                 style: {
                     fontFamily: 'JetBrains Mono, monospace',
-                    color: '#00ff00'
-                }
+                    color: '#00ff00',
+                },
             });
 
-            setMessagesSent(prev => prev + 1);
+            setMessagesSent((prev) => prev + 1);
             form.resetFields();
-
         } catch (error) {
             message.error({
                 content: 'TRANSMISSION_FAILED - Please try again',
                 style: {
                     fontFamily: 'JetBrains Mono, monospace',
-                    color: '#ff0040'
-                }
+                    color: '#ff0040',
+                },
             });
         } finally {
             setLoading(false);
@@ -115,28 +114,26 @@ export default function HackerContact() {
     };
 
     return (
-        <section id="contact" className="py-20 relative">
+        <section id="contact" className="relative py-20">
             <div className="container mx-auto px-6">
-
                 <motion.div
-                    className="text-center mb-16"
+                    className="mb-16 text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-cyber uppercase text-neon-green glow-text mb-4">
+                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
                         CONTACT_PROTOCOL.INIT
                     </h2>
-                    <p className="text-xl text-gray-300 font-mono max-w-3xl mx-auto">
+                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
                         <span className="text-neon-blue">[ESTABLISHING_CONNECTION]</span>
                         Secure communication channels available
                     </p>
                 </motion.div>
 
-                <div className="max-w-6xl mx-auto">
+                <div className="mx-auto max-w-6xl">
                     <Row gutter={[32, 32]}>
-
                         {/* Contact Channels */}
                         <Col xs={24} lg={14}>
                             <motion.div
@@ -147,15 +144,15 @@ export default function HackerContact() {
                             >
                                 <Card
                                     title={
-                                        <span className="font-cyber text-xl text-neon-green glow-text uppercase">
-                      COMMUNICATION_CHANNELS.JSON
-                    </span>
+                                        <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                                            COMMUNICATION_CHANNELS.JSON
+                                        </span>
                                     }
                                     className="neon-border mb-8"
                                     style={{
                                         background: 'rgba(26, 26, 26, 0.9)',
                                         border: '1px solid #00ff00',
-                                        boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)'
+                                        boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)',
                                     }}
                                 >
                                     <Row gutter={[16, 16]}>
@@ -164,14 +161,14 @@ export default function HackerContact() {
                                             return (
                                                 <Col xs={24} sm={12} key={index}>
                                                     <motion.div
-                                                        className="p-4 rounded-lg neon-border hover:shadow-lg transition-all duration-300 cursor-pointer"
+                                                        className="neon-border cursor-pointer rounded-lg p-4 transition-all duration-300 hover:shadow-lg"
                                                         style={{
                                                             background: `${channel.color}10`,
-                                                            border: `1px solid ${channel.color}30`
+                                                            border: `1px solid ${channel.color}30`,
                                                         }}
                                                         whileHover={{
                                                             scale: 1.02,
-                                                            boxShadow: `0 0 20px ${channel.color}40`
+                                                            boxShadow: `0 0 20px ${channel.color}40`,
                                                         }}
                                                         whileTap={{ scale: 0.98 }}
                                                         onClick={() => {
@@ -182,25 +179,30 @@ export default function HackerContact() {
                                                         }}
                                                         initial={{ opacity: 0, y: 20 }}
                                                         whileInView={{ opacity: 1, y: 0 }}
-                                                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                                                        transition={{
+                                                            duration: 0.6,
+                                                            delay: index * 0.1,
+                                                        }}
                                                         viewport={{ once: true }}
                                                     >
                                                         <div className="flex items-start gap-3">
                                                             <div
-                                                                className="p-2 rounded"
-                                                                style={{ background: `${channel.color}20` }}
+                                                                className="rounded p-2"
+                                                                style={{
+                                                                    background: `${channel.color}20`,
+                                                                }}
                                                             >
                                                                 <Icon
-                                                                    className="w-5 h-5"
+                                                                    className="h-5 w-5"
                                                                     style={{ color: channel.color }}
                                                                 />
                                                             </div>
-                                                            <div className="flex-1 min-w-0">
-                                                                <h4 className="font-mono text-sm font-bold text-white mb-1">
+                                                            <div className="min-w-0 flex-1">
+                                                                <h4 className="mb-1 font-mono text-sm font-bold text-white">
                                                                     {channel.title}
                                                                 </h4>
                                                                 <p
-                                                                    className="font-mono text-sm font-semibold mb-1"
+                                                                    className="mb-1 font-mono text-sm font-semibold"
                                                                     style={{ color: channel.color }}
                                                                 >
                                                                     {channel.value}
@@ -229,29 +231,29 @@ export default function HackerContact() {
                                         style={{
                                             background: 'rgba(26, 26, 26, 0.9)',
                                             border: '1px solid #00d4ff',
-                                            boxShadow: '0 0 20px rgba(0, 212, 255, 0.2)'
+                                            boxShadow: '0 0 20px rgba(0, 212, 255, 0.2)',
                                         }}
                                     >
                                         <div className="grid grid-cols-3 gap-4 text-center">
                                             <div>
-                                                <div className="text-2xl font-cyber text-neon-green glow-text">
+                                                <div className="font-cyber text-neon-green glow-text text-2xl">
                                                     24h
                                                 </div>
-                                                <div className="text-sm font-mono text-gray-400">
+                                                <div className="font-mono text-sm text-gray-400">
                                                     Response Time
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="text-2xl font-cyber text-neon-blue glow-text">
+                                                <div className="font-cyber text-neon-blue glow-text text-2xl">
                                                     100%
                                                 </div>
-                                                <div className="text-sm font-mono text-gray-400">
+                                                <div className="font-mono text-sm text-gray-400">
                                                     Secure Comms
                                                 </div>
                                             </div>
                                             <div>
                                                 <motion.div
-                                                    className="text-2xl font-cyber text-neon-purple glow-text"
+                                                    className="font-cyber text-neon-purple glow-text text-2xl"
                                                     key={messagesSent}
                                                     initial={{ scale: 1 }}
                                                     animate={{ scale: [1, 1.2, 1] }}
@@ -259,7 +261,7 @@ export default function HackerContact() {
                                                 >
                                                     {messagesSent}
                                                 </motion.div>
-                                                <div className="text-sm font-mono text-gray-400">
+                                                <div className="font-mono text-sm text-gray-400">
                                                     Messages Sent
                                                 </div>
                                             </div>
@@ -279,15 +281,15 @@ export default function HackerContact() {
                             >
                                 <Card
                                     title={
-                                        <span className="font-cyber text-xl text-neon-green glow-text uppercase">
-                      MESSAGE_TERMINAL.EXEC
-                    </span>
+                                        <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                                            MESSAGE_TERMINAL.EXEC
+                                        </span>
                                     }
                                     className="neon-border"
                                     style={{
                                         background: 'rgba(26, 26, 26, 0.9)',
                                         border: '1px solid #00ff00',
-                                        boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)'
+                                        boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)',
                                     }}
                                 >
                                     <Form
@@ -300,21 +302,28 @@ export default function HackerContact() {
                                             name="name"
                                             label={
                                                 <span className="font-mono text-gray-300">
-                          USER_NAME:
-                        </span>
+                                                    USER_NAME:
+                                                </span>
                                             }
                                             rules={[
-                                                { required: true, message: 'Name required for secure transmission' },
-                                                { min: 2, message: 'Name must be at least 2 characters' }
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        'Name required for secure transmission',
+                                                },
+                                                {
+                                                    min: 2,
+                                                    message: 'Name must be at least 2 characters',
+                                                },
                                             ]}
                                         >
                                             <Input
                                                 placeholder="Enter your name..."
-                                                className="bg-black/50 border-neon-green text-neon-green font-mono"
+                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
-                                                    color: '#00ff00'
+                                                    color: '#00ff00',
                                                 }}
                                             />
                                         </Form.Item>
@@ -323,21 +332,27 @@ export default function HackerContact() {
                                             name="email"
                                             label={
                                                 <span className="font-mono text-gray-300">
-                          EMAIL_ADDRESS:
-                        </span>
+                                                    EMAIL_ADDRESS:
+                                                </span>
                                             }
                                             rules={[
-                                                { required: true, message: 'Email required for response' },
-                                                { type: 'email', message: 'Please enter a valid email address' }
+                                                {
+                                                    required: true,
+                                                    message: 'Email required for response',
+                                                },
+                                                {
+                                                    type: 'email',
+                                                    message: 'Please enter a valid email address',
+                                                },
                                             ]}
                                         >
                                             <Input
                                                 placeholder="your.email@domain.com"
-                                                className="bg-black/50 border-neon-green text-neon-green font-mono"
+                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
-                                                    color: '#00ff00'
+                                                    color: '#00ff00',
                                                 }}
                                             />
                                         </Form.Item>
@@ -346,20 +361,23 @@ export default function HackerContact() {
                                             name="subject"
                                             label={
                                                 <span className="font-mono text-gray-300">
-                          MESSAGE_SUBJECT:
-                        </span>
+                                                    MESSAGE_SUBJECT:
+                                                </span>
                                             }
                                             rules={[
-                                                { required: true, message: 'Subject required for message routing' }
+                                                {
+                                                    required: true,
+                                                    message: 'Subject required for message routing',
+                                                },
                                             ]}
                                         >
                                             <Input
                                                 placeholder="Brief description of your inquiry..."
-                                                className="bg-black/50 border-neon-green text-neon-green font-mono"
+                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
-                                                    color: '#00ff00'
+                                                    color: '#00ff00',
                                                 }}
                                             />
                                         </Form.Item>
@@ -368,23 +386,30 @@ export default function HackerContact() {
                                             name="message"
                                             label={
                                                 <span className="font-mono text-gray-300">
-                          MESSAGE_CONTENT:
-                        </span>
+                                                    MESSAGE_CONTENT:
+                                                </span>
                                             }
                                             rules={[
-                                                { required: true, message: 'Message content required' },
-                                                { min: 20, message: 'Please provide more details (minimum 20 characters)' }
+                                                {
+                                                    required: true,
+                                                    message: 'Message content required',
+                                                },
+                                                {
+                                                    min: 20,
+                                                    message:
+                                                        'Please provide more details (minimum 20 characters)',
+                                                },
                                             ]}
                                         >
                                             <TextArea
                                                 placeholder="Describe your project, opportunity, or inquiry in detail..."
                                                 rows={6}
-                                                className="bg-black/50 border-neon-green text-neon-green font-mono"
+                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
                                                     color: '#00ff00',
-                                                    resize: 'vertical'
+                                                    resize: 'vertical',
                                                 }}
                                             />
                                         </Form.Item>
@@ -398,7 +423,7 @@ export default function HackerContact() {
                                                     type="primary"
                                                     htmlType="submit"
                                                     loading={loading}
-                                                    className="w-full cyber-btn"
+                                                    className="cyber-btn w-full"
                                                     style={{
                                                         background: 'transparent',
                                                         borderColor: '#00ff00',
@@ -406,23 +431,25 @@ export default function HackerContact() {
                                                         height: '48px',
                                                         fontFamily: 'JetBrains Mono, monospace',
                                                         fontWeight: 'bold',
-                                                        textTransform: 'uppercase'
+                                                        textTransform: 'uppercase',
                                                     }}
-                                                    icon={<SendIcon className="w-4 h-4" />}
+                                                    icon={<SendIcon className="h-4 w-4" />}
                                                     onClick={playTerminalSound}
                                                 >
-                                                    {loading ? 'TRANSMITTING...' : 'TRANSMIT_MESSAGE'}
+                                                    {loading
+                                                        ? 'TRANSMITTING...'
+                                                        : 'TRANSMIT_MESSAGE'}
                                                 </Button>
                                             </motion.div>
                                         </Form.Item>
                                     </Form>
 
                                     {/* Terminal Footer */}
-                                    <div className="mt-6 pt-4 border-t border-neon-green/30">
-                                        <div className="flex items-center justify-between text-xs font-mono text-gray-400">
+                                    <div className="border-neon-green/30 mt-6 border-t pt-4">
+                                        <div className="flex items-center justify-between font-mono text-xs text-gray-400">
                                             <span>SECURE_TRANSMISSION_ENABLED</span>
                                             <div className="flex items-center gap-2">
-                                                <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+                                                <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
                                                 <span>READY</span>
                                             </div>
                                         </div>
@@ -441,7 +468,7 @@ export default function HackerContact() {
                     transition={{ duration: 1, delay: 0.5 }}
                     viewport={{ once: true }}
                 >
-                    <div className="ascii-art text-neon-green opacity-30 text-xs">
+                    <div className="ascii-art text-neon-green text-xs opacity-30">
                         {`╔══════════════════════════════════════════════════════════╗
 ║  SECURE COMMUNICATION PROTOCOL ESTABLISHED              ║
 ║  ENCRYPTION: AES-256 | STATUS: ACTIVE | UPTIME: 99.9%   ║

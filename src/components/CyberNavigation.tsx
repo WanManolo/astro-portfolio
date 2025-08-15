@@ -8,7 +8,7 @@ import {
     ClockIcon,
     MailIcon,
     MenuIcon,
-    XIcon
+    XIcon,
 } from 'lucide-react';
 
 const menuItems = [
@@ -36,9 +36,9 @@ export default function CyberNavigation() {
     return (
         <>
             <motion.nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
                     isScrolled
-                        ? 'bg-black/90 backdrop-blur-md border-b border-neon-green/30'
+                        ? 'border-neon-green/30 border-b bg-black/90 backdrop-blur-md'
                         : 'bg-transparent'
                 }`}
                 initial={{ y: -100 }}
@@ -47,23 +47,22 @@ export default function CyberNavigation() {
             >
                 <div className="container mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
-
                         {/* Logo */}
                         <motion.div
                             className="flex items-center gap-2"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="w-8 h-8 border-2 border-neon-green rounded bg-neon-green/20 flex items-center justify-center">
-                                <TerminalIcon className="w-5 h-5 text-neon-green" />
+                            <div className="border-neon-green bg-neon-green/20 flex h-8 w-8 items-center justify-center rounded border-2">
+                                <TerminalIcon className="text-neon-green h-5 w-5" />
                             </div>
-                            <span className="font-cyber text-xl text-neon-green glow-text">
-                JRO_TERMINAL
-              </span>
+                            <span className="font-cyber text-neon-green glow-text text-xl">
+                                JRO_TERMINAL
+                            </span>
                         </motion.div>
 
                         {/* Desktop Menu */}
-                        <div className="hidden md:flex items-center gap-8">
+                        <div className="hidden items-center gap-8 md:flex">
                             {menuItems.map((item) => {
                                 const Icon = item.icon;
                                 return (
@@ -73,12 +72,12 @@ export default function CyberNavigation() {
                                         className={`flex items-center gap-2 font-mono text-sm transition-all duration-300 ${
                                             activeSection === item.key
                                                 ? 'text-neon-green glow-text'
-                                                : 'text-gray-400 hover:text-neon-green'
+                                                : 'hover:text-neon-green text-gray-400'
                                         }`}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                     >
-                                        <Icon className="w-4 h-4" />
+                                        <Icon className="h-4 w-4" />
                                         {item.label}
                                     </motion.a>
                                 );
@@ -86,19 +85,19 @@ export default function CyberNavigation() {
                         </div>
 
                         {/* Status Indicator */}
-                        <div className="hidden md:flex items-center gap-2">
-                            <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
-                            <span className="font-mono text-xs text-neon-green">ONLINE</span>
+                        <div className="hidden items-center gap-2 md:flex">
+                            <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
+                            <span className="text-neon-green font-mono text-xs">ONLINE</span>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <motion.button
-                            className="md:hidden p-2 text-neon-green"
+                            className="text-neon-green p-2 md:hidden"
                             onClick={() => setIsMobileMenuOpen(true)}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                         >
-                            <MenuIcon className="w-6 h-6" />
+                            <MenuIcon className="h-6 w-6" />
                         </motion.button>
                     </div>
                 </div>
@@ -107,9 +106,7 @@ export default function CyberNavigation() {
             {/* Mobile Menu Drawer */}
             <Drawer
                 title={
-                    <span className="font-cyber text-neon-green glow-text">
-                    NAVIGATION_MENU
-                    </span>
+                    <span className="font-cyber text-neon-green glow-text">NAVIGATION_MENU</span>
                 }
                 placement="right"
                 onClose={() => setIsMobileMenuOpen(false)}
@@ -133,21 +130,21 @@ export default function CyberNavigation() {
                             <motion.a
                                 key={item.key}
                                 href={item.href}
-                                className="flex items-center gap-3 p-3 rounded neon-border text-gray-300 hover:text-neon-green transition-colors"
+                                className="neon-border hover:text-neon-green flex items-center gap-3 rounded p-3 text-gray-300 transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 whileHover={{ x: 10 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Icon className="w-5 h-5" />
+                                <Icon className="h-5 w-5" />
                                 <span className="font-mono">{item.label}</span>
                             </motion.a>
                         );
                     })}
 
-                    <div className="mt-8 p-4 neon-border rounded">
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
-                            <span className="font-mono text-xs text-neon-green">STATUS</span>
+                    <div className="neon-border mt-8 rounded p-4">
+                        <div className="mb-2 flex items-center gap-2">
+                            <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
+                            <span className="text-neon-green font-mono text-xs">STATUS</span>
                         </div>
                         <p className="font-mono text-sm text-gray-300">
                             Available for leadership roles

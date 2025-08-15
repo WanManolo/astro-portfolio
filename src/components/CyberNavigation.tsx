@@ -36,48 +36,48 @@ export default function CyberNavigation() {
     return (
         <>
             <motion.nav
-                className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+                className={`tw:fixed tw:top-0 tw:right-0 tw:left-0 tw:z-50 tw:transition-all tw:duration-300 ${
                     isScrolled
-                        ? 'border-neon-green/30 border-b bg-black/90 backdrop-blur-md'
-                        : 'bg-transparent'
+                        ? 'tw:border-[#39ff14]/30 tw:border-b tw:bg-black/90 tw:backdrop-blur-md'
+                        : 'tw:bg-transparent'
                 }`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <div className="container mx-auto px-6 py-4">
-                    <div className="flex items-center justify-between">
+                <div className="tw:container tw:mx-auto tw:px-6 tw:py-4">
+                    <div className="tw:flex tw:items-center tw:justify-between">
                         {/* Logo */}
                         <motion.div
-                            className="flex items-center gap-2"
+                            className="tw:flex tw:items-center tw:gap-2"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="border-neon-green bg-neon-green/20 flex h-8 w-8 items-center justify-center rounded border-2">
-                                <TerminalIcon className="text-neon-green h-5 w-5" />
+                            <div className="tw:border-[#39ff14] tw:bg-[#39ff14]/20 tw:flex tw:h-8 w-8 tw:items-center tw:justify-center tw:rounded tw:border-2">
+                                <TerminalIcon className="tw:text-[#39ff14] tw:h-5 tw:w-5" />
                             </div>
-                            <span className="font-cyber text-neon-green glow-text text-xl">
+                            <span className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-xl">
                                 JRO_TERMINAL
                             </span>
                         </motion.div>
 
                         {/* Desktop Menu */}
-                        <div className="hidden items-center gap-8 md:flex">
+                        <div className="tw:hidden tw:items-center tw:gap-8 tw:md:flex">
                             {menuItems.map((item) => {
                                 const Icon = item.icon;
                                 return (
                                     <motion.a
                                         key={item.key}
                                         href={item.href}
-                                        className={`flex items-center gap-2 font-mono text-sm transition-all duration-300 ${
+                                        className={`tw:flex tw:items-center tw:gap-2 tw:font-mono tw:text-sm tw:transition-all tw:duration-300 ${
                                             activeSection === item.key
-                                                ? 'text-neon-green glow-text'
-                                                : 'hover:text-neon-green text-gray-400'
+                                                ? 'tw:text-[#39ff14] glow-text'
+                                                : 'hover:tw:text-[#39ff14] tw:text-gray-400'
                                         }`}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}
                                     >
-                                        <Icon className="h-4 w-4" />
+                                        <Icon className="tw:h-4 tw:w-4" />
                                         {item.label}
                                     </motion.a>
                                 );
@@ -85,19 +85,19 @@ export default function CyberNavigation() {
                         </div>
 
                         {/* Status Indicator */}
-                        <div className="hidden items-center gap-2 md:flex">
-                            <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
-                            <span className="text-neon-green font-mono text-xs">ONLINE</span>
+                        <div className="tw:hidden tw:items-center tw:gap-2 tw:md:flex">
+                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
+                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">ONLINE</span>
                         </div>
 
                         {/* Mobile Menu Button */}
                         <motion.button
-                            className="text-neon-green p-2 md:hidden"
+                            className="tw:text-[#39ff14] tw:p-2 tw:md:hidden"
                             onClick={() => setIsMobileMenuOpen(true)}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                         >
-                            <MenuIcon className="h-6 w-6" />
+                            <MenuIcon className="tw:h-6 tw:w-6" />
                         </motion.button>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ export default function CyberNavigation() {
             {/* Mobile Menu Drawer */}
             <Drawer
                 title={
-                    <span className="font-cyber text-neon-green glow-text">NAVIGATION_MENU</span>
+                    <span className="tw:font-cyber tw:text-[#39ff14] glow-text">NAVIGATION_MENU</span>
                 }
                 placement="right"
                 onClose={() => setIsMobileMenuOpen(false)}
@@ -123,30 +123,30 @@ export default function CyberNavigation() {
                     padding: '20px',
                 }}
             >
-                <div className="space-y-6">
+                <div className="tw:space-y-6">
                     {menuItems.map((item) => {
                         const Icon = item.icon;
                         return (
                             <motion.a
                                 key={item.key}
                                 href={item.href}
-                                className="neon-border hover:text-neon-green flex items-center gap-3 rounded p-3 text-gray-300 transition-colors"
+                                className="neon-border tw:hover:text-[#39ff14] tw:flex tw:items-center tw:gap-3 tw:rounded p-3 tw:text-gray-300 tw:transition-colors"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 whileHover={{ x: 10 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Icon className="h-5 w-5" />
-                                <span className="font-mono">{item.label}</span>
+                                <Icon className="tw:h-5 tw:w-5" />
+                                <span className="tw:font-mono">{item.label}</span>
                             </motion.a>
                         );
                     })}
 
-                    <div className="neon-border mt-8 rounded p-4">
-                        <div className="mb-2 flex items-center gap-2">
-                            <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
-                            <span className="text-neon-green font-mono text-xs">STATUS</span>
+                    <div className="neon-border tw:mt-8 tw:rounded tw:p-4">
+                        <div className="tw:mb-2 tw:flex tw:items-center tw:gap-2">
+                            <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
+                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">STATUS</span>
                         </div>
-                        <p className="font-mono text-sm text-gray-300">
+                        <p className="tw:font-mono tw:text-sm tw:text-gray-300">
                             Available for leadership roles
                         </p>
                     </div>

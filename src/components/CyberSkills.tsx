@@ -86,20 +86,20 @@ export default function CyberSkills() {
     const [activeTab, setActiveTab] = useState('frontend');
 
     return (
-        <section className="relative py-20">
-            <div className="container mx-auto px-6">
+        <section id={'skills'} className="tw:relative tw:py-20">
+            <div className="tw:container tw:mx-auto tw:px-6">
                 <motion.div
-                    className="mb-16 text-center"
+                    className="tw:mb-16 tw:text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
+                    <h2 className="tw:font-cyber tw:text-[#39ff14] glow-text tw:mb-4 tw:text-4xl tw:uppercase tw:md:text-5xl">
                         SKILL_MATRIX.EXE
                     </h2>
-                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
-                        <span className="text-neon-blue">[SCANNING]</span> Technical expertise
+                    <p className="tw:mx-auto tw:max-w-3xl tw:font-mono tw:text-xl tw:text-gray-300">
+                        <span className="tw:text-neon-blue">[SCANNING]</span> Technical expertise
                         across multiple domains
                     </p>
                 </motion.div>
@@ -109,7 +109,7 @@ export default function CyberSkills() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="mx-auto max-w-6xl"
+                    className="tw:mx-auto tw:max-w-6xl"
                 >
                     <Card
                         className="neon-border"
@@ -132,8 +132,8 @@ export default function CyberSkills() {
                                     <TabPane
                                         key={key}
                                         tab={
-                                            <span className="flex items-center gap-2 font-mono">
-                                                <Icon className="h-5 w-5" />
+                                            <span className="tw:flex tw:items-center tw:gap-2 tw:font-mono">
+                                                <Icon className="tw:h-5 tw:w-5" />
                                                 {category.title}
                                             </span>
                                         }
@@ -145,12 +145,12 @@ export default function CyberSkills() {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -20 }}
                                                 transition={{ duration: 0.3 }}
-                                                className="grid gap-6 md:grid-cols-2"
+                                                className="tw:grid tw:gap-6 tw:md:grid-cols-2"
                                             >
                                                 {category.skills.map((skill, index) => (
                                                     <motion.div
                                                         key={skill.name}
-                                                        className="neon-border space-y-3 rounded-lg p-4"
+                                                        className="neon-border tw:space-y-3 tw:rounded-lg tw:p-4"
                                                         style={{
                                                             background: `${category.color}10`,
                                                             border: `1px solid ${category.color}30`,
@@ -162,11 +162,11 @@ export default function CyberSkills() {
                                                             delay: index * 0.1,
                                                         }}
                                                     >
-                                                        <div className="flex items-center justify-between">
-                                                            <h4 className="font-mono font-semibold text-white">
+                                                        <div className="tw:flex tw:items-center tw:justify-between">
+                                                            <h4 className="tw:font-mono tw:font-semibold tw:text-white">
                                                                 {skill.name}
                                                             </h4>
-                                                            <div className="flex items-center gap-2">
+                                                            <div className="tw:flex tw:items-center tw:gap-2">
                                                                 <Badge
                                                                     count={`${skill.years}y`}
                                                                     style={{
@@ -175,7 +175,7 @@ export default function CyberSkills() {
                                                                     }}
                                                                 />
                                                                 <span
-                                                                    className="font-mono text-sm font-bold"
+                                                                    className="tw:font-mono tw:text-sm tw:font-bold"
                                                                     style={{
                                                                         color: category.color,
                                                                         textShadow: `0 0 5px ${category.color}50`,

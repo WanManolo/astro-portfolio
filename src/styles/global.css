@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' prefix(tw);
 @import 'tailwindcss/utilities';
 
 /* Custom Cyber Styles */
@@ -34,26 +34,26 @@
 @layer components {
     /* Terminal Window */
     .terminal-window {
-        @apply overflow-hidden rounded-lg border bg-gray-900 shadow-2xl;
+        @apply tw:overflow-hidden tw:rounded-lg tw:border tw:border-[#39ff14] tw:bg-gray-900 tw:shadow-2xl;
         box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
     }
 
     .terminal-header {
-        @apply flex items-center gap-2 border-b bg-gray-800 px-4 py-2;
+        @apply tw:flex tw:items-center tw:gap-2 tw:border-b tw:border-[#39ff14] tw:bg-gray-800 tw:px-4 tw:py-2;
     }
 
     .terminal-dot {
-        @apply h-3 w-3 rounded-full;
+        @apply tw:h-3 tw:w-3 tw:rounded-full;
     }
 
     .terminal-dot.red {
-        @apply bg-red-500;
+        @apply tw:bg-red-500;
     }
     .terminal-dot.yellow {
-        @apply bg-yellow-500;
+        @apply tw:bg-yellow-500;
     }
     .terminal-dot.green {
-        @apply bg-green-500;
+        @apply tw:bg-green-500;
     }
 
     /* Glowing Text */
@@ -75,36 +75,36 @@
 
     /* Cyber Button */
     .cyber-btn {
-        @apply relative border-2 bg-transparent px-6 py-3 font-mono tracking-wider uppercase transition-all duration-300;
+        @apply tw:relative tw:border-2 tw:bg-transparent tw:border-[#39ff14] tw:text-[#39ff14] tw:px-6 tw:py-3 tw:font-mono tw:tracking-wider tw:uppercase tw:transition-all tw:duration-300;
         clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
     }
 
     .cyber-btn::before {
         content: '';
-        @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+        @apply tw:absolute tw:inset-0 tw:border-[#39ff14] tw:opacity-0 tw:transition-opacity tw:duration-300;
         clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
         z-index: -1;
     }
 
     .cyber-btn:hover::before {
-        @apply opacity-20;
+        @apply tw:opacity-20;
     }
 
     .cyber-btn:hover {
-        @apply shadow-lg;
+        @apply tw:shadow-lg;
         box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
         text-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
     }
 
     /* ASCII Art Container */
     .ascii-art {
-        @apply font-mono text-xs leading-none whitespace-pre;
+        @apply tw:font-mono tw:text-xs tw:leading-none tw:whitespace-pre;
         text-shadow: 0 0 5px currentColor;
     }
 
     /* Typing Animation */
     .typing-text {
-        @apply border-r-2;
+        @apply tw:border-r-2 tw:border-[#39ff14];
         animation:
             type 3.5s steps(40, end),
             blink 1s infinite;

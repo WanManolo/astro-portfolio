@@ -114,25 +114,25 @@ export default function HackerContact() {
     };
 
     return (
-        <section id="contact" className="relative py-20">
-            <div className="container mx-auto px-6">
+        <section id="contact" className="tw:relative tw:py-20">
+            <div className="tw:container tw:mx-auto tw:px-6">
                 <motion.div
-                    className="mb-16 text-center"
+                    className="tw:mb-16 tw:text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
+                    <h2 className="tw:font-cyber tw:text-[#39ff14] glow-text tw:mb-4 tw:text-4xl tw:uppercase tw:md:text-5xl">
                         CONTACT_PROTOCOL.INIT
                     </h2>
-                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
-                        <span className="text-neon-blue">[ESTABLISHING_CONNECTION]</span>
+                    <p className="tw:mx-auto tw:max-w-3xl tw:font-mono tw:text-xl tw:text-gray-300">
+                        <span className="tw:text-[#00d4ff]">[ESTABLISHING_CONNECTION]</span>
                         Secure communication channels available
                     </p>
                 </motion.div>
 
-                <div className="mx-auto max-w-6xl">
+                <div className="tw:mx-auto tw:max-w-6xl">
                     <Row gutter={[32, 32]}>
                         {/* Contact Channels */}
                         <Col xs={24} lg={14}>
@@ -144,11 +144,11 @@ export default function HackerContact() {
                             >
                                 <Card
                                     title={
-                                        <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                                        <span className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-xl tw:uppercase">
                                             COMMUNICATION_CHANNELS.JSON
                                         </span>
                                     }
-                                    className="neon-border mb-8"
+                                    className="neon-border tw:mb-8"
                                     style={{
                                         background: 'rgba(26, 26, 26, 0.9)',
                                         border: '1px solid #00ff00',
@@ -161,7 +161,7 @@ export default function HackerContact() {
                                             return (
                                                 <Col xs={24} sm={12} key={index}>
                                                     <motion.div
-                                                        className="neon-border cursor-pointer rounded-lg p-4 transition-all duration-300 hover:shadow-lg"
+                                                        className="neon-border tw:cursor-pointer tw:rounded-lg tw:p-4 tw:transition-all tw:duration-300 tw:hover:shadow-lg"
                                                         style={{
                                                             background: `${channel.color}10`,
                                                             border: `1px solid ${channel.color}30`,
@@ -185,29 +185,29 @@ export default function HackerContact() {
                                                         }}
                                                         viewport={{ once: true }}
                                                     >
-                                                        <div className="flex items-start gap-3">
+                                                        <div className="tw:flex tw:items-start tw:gap-3">
                                                             <div
-                                                                className="rounded p-2"
+                                                                className="tw:rounded tw:p-2"
                                                                 style={{
                                                                     background: `${channel.color}20`,
                                                                 }}
                                                             >
                                                                 <Icon
-                                                                    className="h-5 w-5"
+                                                                    className="tw:h-5 tw:w-5"
                                                                     style={{ color: channel.color }}
                                                                 />
                                                             </div>
-                                                            <div className="min-w-0 flex-1">
-                                                                <h4 className="mb-1 font-mono text-sm font-bold text-white">
+                                                            <div className="tw:min-w-0 tw:flex-1">
+                                                                <h4 className="tw:mb-1 tw:font-mono tw:text-sm tw:font-bold tw:text-white">
                                                                     {channel.title}
                                                                 </h4>
                                                                 <p
-                                                                    className="mb-1 font-mono text-sm font-semibold"
+                                                                    className="tw:mb-1 tw:font-mono tw:text-sm tw:font-semibold"
                                                                     style={{ color: channel.color }}
                                                                 >
                                                                     {channel.value}
                                                                 </p>
-                                                                <p className="text-xs text-gray-400">
+                                                                <p className="tw:text-xs tw:text-gray-400">
                                                                     {channel.description}
                                                                 </p>
                                                             </div>
@@ -234,26 +234,26 @@ export default function HackerContact() {
                                             boxShadow: '0 0 20px rgba(0, 212, 255, 0.2)',
                                         }}
                                     >
-                                        <div className="grid grid-cols-3 gap-4 text-center">
+                                        <div className="tw:grid tw:grid-cols-3 tw:gap-4 tw:text-center">
                                             <div>
-                                                <div className="font-cyber text-neon-green glow-text text-2xl">
+                                                <div className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-2xl">
                                                     24h
                                                 </div>
-                                                <div className="font-mono text-sm text-gray-400">
+                                                <div className="tw:font-mono tw:text-sm tw:text-gray-400">
                                                     Response Time
                                                 </div>
                                             </div>
                                             <div>
-                                                <div className="font-cyber text-neon-blue glow-text text-2xl">
+                                                <div className="tw:font-cyber tw:text-[#00d4ff] glow-text tw:text-2xl">
                                                     100%
                                                 </div>
-                                                <div className="font-mono text-sm text-gray-400">
+                                                <div className="tw:font-mono tw:text-sm tw:text-gray-400">
                                                     Secure Comms
                                                 </div>
                                             </div>
                                             <div>
                                                 <motion.div
-                                                    className="font-cyber text-neon-purple glow-text text-2xl"
+                                                    className="tw:font-cyber tw:text-[#bf00ff] glow-text tw:text-2xl"
                                                     key={messagesSent}
                                                     initial={{ scale: 1 }}
                                                     animate={{ scale: [1, 1.2, 1] }}
@@ -261,7 +261,7 @@ export default function HackerContact() {
                                                 >
                                                     {messagesSent}
                                                 </motion.div>
-                                                <div className="font-mono text-sm text-gray-400">
+                                                <div className="tw:font-mono tw:text-sm tw:text-gray-400">
                                                     Messages Sent
                                                 </div>
                                             </div>
@@ -281,7 +281,7 @@ export default function HackerContact() {
                             >
                                 <Card
                                     title={
-                                        <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                                        <span className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-xl tw:uppercase">
                                             MESSAGE_TERMINAL.EXEC
                                         </span>
                                     }
@@ -296,12 +296,12 @@ export default function HackerContact() {
                                         form={form}
                                         layout="vertical"
                                         onFinish={handleSubmit}
-                                        className="space-y-4"
+                                        className="tw:space-y-4"
                                     >
                                         <Form.Item
                                             name="name"
                                             label={
-                                                <span className="font-mono text-gray-300">
+                                                <span className="tw:font-mono tw:text-gray-300">
                                                     USER_NAME:
                                                 </span>
                                             }
@@ -319,7 +319,7 @@ export default function HackerContact() {
                                         >
                                             <Input
                                                 placeholder="Enter your name..."
-                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
+                                                className="tw:border-[#39ff14] tw:text-[#39ff14] tw:bg-black/50 tw:font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
@@ -331,7 +331,7 @@ export default function HackerContact() {
                                         <Form.Item
                                             name="email"
                                             label={
-                                                <span className="font-mono text-gray-300">
+                                                <span className="tw:font-mono tw:text-gray-300">
                                                     EMAIL_ADDRESS:
                                                 </span>
                                             }
@@ -348,7 +348,7 @@ export default function HackerContact() {
                                         >
                                             <Input
                                                 placeholder="your.email@domain.com"
-                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
+                                                className="tw:border-[#39ff14] tw:text-[#39ff14] tw:bg-black/50 tw:font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
@@ -360,7 +360,7 @@ export default function HackerContact() {
                                         <Form.Item
                                             name="subject"
                                             label={
-                                                <span className="font-mono text-gray-300">
+                                                <span className="tw:font-mono tw:text-gray-300">
                                                     MESSAGE_SUBJECT:
                                                 </span>
                                             }
@@ -373,7 +373,7 @@ export default function HackerContact() {
                                         >
                                             <Input
                                                 placeholder="Brief description of your inquiry..."
-                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
+                                                className="tw:border-[#39ff14] tw:text-[#39ff14] tw:bg-black/50 tw:font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
@@ -385,7 +385,7 @@ export default function HackerContact() {
                                         <Form.Item
                                             name="message"
                                             label={
-                                                <span className="font-mono text-gray-300">
+                                                <span className="tw:font-mono tw:text-gray-300">
                                                     MESSAGE_CONTENT:
                                                 </span>
                                             }
@@ -404,7 +404,7 @@ export default function HackerContact() {
                                             <TextArea
                                                 placeholder="Describe your project, opportunity, or inquiry in detail..."
                                                 rows={6}
-                                                className="border-neon-green text-neon-green bg-black/50 font-mono"
+                                                className="tw:border-[#39ff14] tw:text-[#39ff14] tw:bg-black/50 tw:font-mono"
                                                 style={{
                                                     background: 'rgba(0, 0, 0, 0.5)',
                                                     borderColor: '#00ff00',
@@ -423,7 +423,7 @@ export default function HackerContact() {
                                                     type="primary"
                                                     htmlType="submit"
                                                     loading={loading}
-                                                    className="cyber-btn w-full"
+                                                    className="cyber-btn tw:w-full"
                                                     style={{
                                                         background: 'transparent',
                                                         borderColor: '#00ff00',
@@ -433,7 +433,7 @@ export default function HackerContact() {
                                                         fontWeight: 'bold',
                                                         textTransform: 'uppercase',
                                                     }}
-                                                    icon={<SendIcon className="h-4 w-4" />}
+                                                    icon={<SendIcon className="tw:h-4 tw:w-4" />}
                                                     onClick={playTerminalSound}
                                                 >
                                                     {loading
@@ -445,11 +445,11 @@ export default function HackerContact() {
                                     </Form>
 
                                     {/* Terminal Footer */}
-                                    <div className="border-neon-green/30 mt-6 border-t pt-4">
-                                        <div className="flex items-center justify-between font-mono text-xs text-gray-400">
+                                    <div className="tw:border-[#39ff14]/30 tw:mt-6 tw:border-t tw:pt-4">
+                                        <div className="tw:flex tw:items-center tw:justify-between tw:font-mono tw:text-xs tw:text-gray-400">
                                             <span>SECURE_TRANSMISSION_ENABLED</span>
-                                            <div className="flex items-center gap-2">
-                                                <div className="bg-neon-green h-2 w-2 animate-pulse rounded-full"></div>
+                                            <div className="tw:flex tw:items-center tw:gap-2">
+                                                <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
                                                 <span>READY</span>
                                             </div>
                                         </div>
@@ -462,13 +462,13 @@ export default function HackerContact() {
 
                 {/* ASCII Art Footer */}
                 <motion.div
-                    className="mt-16 text-center"
+                    className="tw:mt-16 tw:text-center"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
                     viewport={{ once: true }}
                 >
-                    <div className="ascii-art text-neon-green text-xs opacity-30">
+                    <div className="ascii-art tw:text-[#39ff14] tw:text-xs tw:opacity-30">
                         {`╔══════════════════════════════════════════════════════════╗
 ║  SECURE COMMUNICATION PROTOCOL ESTABLISHED              ║
 ║  ENCRYPTION: AES-256 | STATUS: ACTIVE | UPTIME: 99.9%   ║

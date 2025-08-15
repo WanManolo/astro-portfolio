@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-export const config: Config = {
+const config: Config = {
     prefix: 'tw:',
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     darkMode: 'class',
@@ -87,3 +87,5 @@ export const config: Config = {
     //     preflight: false, // Disable Tailwind's preflight to avoid conflicts with Ant Design
     // }
 };
+
+export default config;

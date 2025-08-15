@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TerminalHero from '../components/TerminalHero';
+import SecurityMatrix from '../components/SecurityMatrix';
+import CyberTimeline from '../components/CyberTimeline';
+import CyberSkills from '../components/CyberSkills';
+import HackerContact from '../components/HackerContact';
+import CyberNavigation from '../components/CyberNavigation';
+---
+
+<Layout title="Juan Manuel Rodríguez | Senior Software Engineer">
+    <CyberNavigation client:load />
+
+    <main>
+        <TerminalHero client:load />
+        <SecurityMatrix client:load />
+        <CyberSkills client:load />
+        <CyberTimeline client:load />
+        <HackerContact client:load />
+    </main>
+</Layout>
+
+<style>
+    /* Custom scrollbar for the entire page */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom selection color */
+    ::selection {
+        background: rgba(0, 255, 0, 0.3);
+        color: #00ff00;
+    }
+
+    ::-moz-selection {
+        background: rgba(0, 255, 0, 0.3);
+        color: #00ff00;
+    }
+</style>

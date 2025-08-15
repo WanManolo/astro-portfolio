@@ -1,0 +1,134 @@
+---
+import '@fontsource/jetbrains-mono';
+import '@fontsource/orbitron';
+import '@fontsource/source-code-pro';
+import '../styles/global.css';
+
+export interface Props {
+    title: string;
+    description?: string;
+    }
+
+const { title, description = "Juan Manuel Rodríguez - Senior Software Engineer" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Cyber/Hacker Theme Meta -->
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+</head>
+<body class="bg-terminal-bg text-neon-green font-mono antialiased overflow-x-hidden">
+<!-- Matrix Rain Background -->
+<div id="matrix-bg" class="fixed inset-0 opacity-10 pointer-events-none z-0"></div>
+
+<!-- Scanning Line Effect -->
+<div class="fixed top-0 left-0 w-full h-0.5 bg-terminal-scan animate-scan opacity-30 z-50"></div>
+
+<!-- Main Content -->
+<div class="relative z-10">
+    <slot />
+</div>
+
+<!-- Terminal Audio (optional) -->
+<audio id="terminal-sound" preload="auto">
+    <source src="/assets/sounds/terminal-beep.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    // Matrix Rain Effect
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    document.getElementById('matrix-bg')?.appendChild(canvas);
+
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.zIndex = '1';
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
+    const charArray = chars.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        if (!ctx) return;
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff00';
+        ctx.font = `${fontSize}px JetBrains Mono, monospace`;
+
+        drops.forEach((y, index) => {
+            const text = charArray[Math.floor(Math.random() * charArray.length)];
+            const x = index * fontSize;
+
+            ctx.fillText(text, x, y * fontSize);
+
+            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[index] = 0;
+            }
+            drops[index]++;
+        });
+    }
+
+    setInterval(drawMatrix, 50);
+
+    // Terminal Sound Effects
+    let audioEnabled = false;
+
+    document.addEventListener('click', () => {
+        if (!audioEnabled) {
+            const audio = document.getElementById('terminal-sound');
+            if (audio) {
+                audio.volume = 0.1;
+                audioEnabled = true;
+            }
+        }
+    });
+
+    // Glitch Effect on Scroll
+    let ticking = false;
+
+    function updateGlitch() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+
+        document.body.style.transform = `translateZ(0) translateY(${rate}px)`;
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateGlitch);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick);
+</script>
+</body>
+</html>

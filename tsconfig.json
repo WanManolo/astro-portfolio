@@ -1,11 +1,15 @@
 {
     "extends": "astro/tsconfigs/strict",
-    "include": [".astro/types.d.ts", "**/*"],
-    "exclude": ["dist"],
+    "include": [".astro/types.d.ts", "src/**/*", "eslint.config.ts"],
+    "exclude": ["dist", "node_modules"],
     "compilerOptions": {
         "baseUrl": ".",
         "jsx": "react-jsx",
         "jsxImportSource": "react",
+        "allowJs": true,
+        "checkJs": false,
+        "strict": true,
+        "noEmit": true,
         "paths": {
             "@/*": ["src/*"],
             "@/components/*": ["src/components/*"],

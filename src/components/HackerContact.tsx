@@ -8,7 +8,6 @@ import {
     ShieldIcon,
     SendIcon,
     MapPinIcon,
-    PhoneIcon,
     ClockIcon,
 } from 'lucide-react';
 
@@ -78,7 +77,7 @@ export default function HackerContact() {
             await new Promise((resolve) => setTimeout(resolve, 2000));
 
             // In a real app, you'd send this to your backend
-            console.log('Form submitted:', values);
+            console.warn('Form submitted:', values);
 
             message.success({
                 content: 'MESSAGE_TRANSMITTED_SUCCESSFULLY',
@@ -449,7 +448,7 @@ export default function HackerContact() {
                                         <div className="tw:flex tw:items-center tw:justify-between tw:font-mono tw:text-xs tw:text-gray-400">
                                             <span>SECURE_TRANSMISSION_ENABLED</span>
                                             <div className="tw:flex tw:items-center tw:gap-2">
-                                                <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
+                                                <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full" />
                                                 <span>READY</span>
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Timeline, Card } from 'antd';
 import { motion } from 'framer-motion';
-import { ShieldIcon, CodeIcon, UsersIcon, ServerIcon, LockIcon, ZapIcon } from 'lucide-react';
+import { ShieldIcon, CodeIcon, UsersIcon, LockIcon } from 'lucide-react';
 
 const experiences = [
     {
@@ -155,7 +155,7 @@ export default function CyberTimeline() {
                                                 style={{
                                                     background: exp.color,
                                                 }}
-                                            ></span>
+                                             />
                                             {achievement}
                                         </div>
                                     ))}

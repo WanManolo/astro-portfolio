@@ -58,7 +58,7 @@ export default function TerminalHero() {
     return (
         <section className="tw:relative tw:flex tw:min-h-screen tw:items-center tw:justify-center tw:overflow-hidden tw:p-6">
             {/* Grid Background */}
-            <div className="tw:bg-cyber-grid tw:absolute tw:inset-0 tw:opacity-20"></div>
+            <div className="tw:bg-cyber-grid tw:absolute tw:inset-0 tw:opacity-20" />
 
             <div className="tw:relative tw:z-10 tw:container tw:mx-auto tw:max-w-6xl">
                 <div className="tw:grid tw:items-center tw:gap-12 tw:lg:grid-cols-2">
@@ -70,9 +70,9 @@ export default function TerminalHero() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="terminal-header">
-                            <div className="terminal-dot red"></div>
-                            <div className="terminal-dot yellow"></div>
-                            <div className="terminal-dot green"></div>
+                            <div className="terminal-dot red" />
+                            <div className="terminal-dot yellow" />
+                            <div className="terminal-dot green" />
                             <span className="tw:ml-4 tw:font-mono tw:text-sm tw:text-gray-400">
                                 root@infosec-terminal
                             </span>
@@ -84,7 +84,9 @@ export default function TerminalHero() {
                                     <span className="tw:text-[#39ff14] glow-text">
                                         {line}
                                         {index === currentLineIndex && (
-                                            <span className="tw:animate-blink tw:text-[#39ff14]">█</span>
+                                            <span className="tw:animate-blink tw:text-[#39ff14]">
+                                                █
+                                            </span>
                                         )}
                                     </span>
                                 </div>
@@ -118,8 +120,8 @@ export default function TerminalHero() {
 
                             <div className="tw:mt-6 tw:flex tw:flex-wrap tw:gap-4">
                                 <div className="neon-border tw:flex tw:items-center tw:gap-2 tw:rounded tw:px-4 tw:py-2">
-                                    <Shield className="text-[#39ff14] tw:h-5 tw:w-5" />
-                                    <span className="text-[#39ff14] tw:font-mono tw:text-sm">
+                                    <Shield className="tw:h-5 tw:w-5 text-[#39ff14]" />
+                                    <span className="tw:font-mono tw:text-sm text-[#39ff14]">
                                         INFOSEC_LEADER
                                     </span>
                                 </div>
@@ -147,9 +149,9 @@ export default function TerminalHero() {
                             transition={{ delay: 1.5 }}
                         >
                             <p className="tw:font-mono tw:text-lg tw:leading-relaxed tw:text-gray-300">
-                                <span className="tw:text-[#39ff14]">[MISSION]</span> Building secure,
-                                scalable applications while leading high-performance teams to
-                                deliver exceptional results in the cybersecurity landscape.
+                                <span className="tw:text-[#39ff14]">[MISSION]</span> Building
+                                secure, scalable applications while leading high-performance teams
+                                to deliver exceptional results in the cybersecurity landscape.
                             </p>
 
                             <div className="tw:mt-8 tw:flex tw:flex-col tw:gap-4 tw:sm:flex-row">

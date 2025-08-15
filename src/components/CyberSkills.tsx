@@ -1,18 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Card, Tabs, Badge, Progress } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-    CodeIcon,
-    ShieldIcon,
-    ServerIcon,
-    UsersIcon,
-    TerminalIcon,
-    DatabaseIcon,
-    CloudIcon,
-    LockIcon,
-} from 'lucide-react';
-
-const { TabPane } = Tabs;
+import { CodeIcon, ShieldIcon, ServerIcon, UsersIcon, CloudIcon } from 'lucide-react';
 
 const skillCategories = {
     frontend: {
@@ -89,7 +78,7 @@ export default function CyberSkills() {
         return Object.entries(skillCategories).map(([key, category]) => {
             const Icon = category.icon;
             return {
-                key: key,
+                key,
                 label: (
                     <span className="tw:flex tw:items-center tw:gap-2 tw:font-mono">
                         <Icon className="tw:h-5 tw:w-5" />
@@ -153,7 +142,7 @@ export default function CyberSkills() {
                                             '100%': category.color + '80',
                                         }}
                                         trailColor="rgba(255, 255, 255, 0.1)"
-                                        size={"small"}
+                                        size={'small'}
                                     />
                                 </motion.div>
                             ))}

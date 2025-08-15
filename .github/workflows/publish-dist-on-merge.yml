@@ -1,86 +1,83 @@
-name: Publish dist to WanManolo.github.io on PR merge to master
+name: Deploy Astro Portfolio
 
 on:
-    pull_request:
-        types: [closed]
+    push:
         branches: [master]
-
-concurrency:
-    group: publish-dist-${{ github.ref }}
-    cancel-in-progress: false
+    pull_request:
+        branches: [master]
+        types: [closed]
 
 jobs:
-    build-and-publish:
-        name: Build and publish dist
-        # Only run if the PR was merged (not just closed)
-        if: github.event.pull_request.merged == true
+    deploy:
+        # Only run on pushes to master or merged PRs from develop to master
+        if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || (github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master' && github.event.pull_request.head.ref == 'develop'))
+
         runs-on: ubuntu-latest
-        permissions:
-            contents: read # for checking out the source repo
 
         steps:
-            - name: Check out source repo
+            - name: Checkout source repository
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
 
-            - name: Set up pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 10.14.0
-                  run_install: false
-
-            - name: Use Node.js 22.18.0 (with pnpm cache)
+            - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 22.18.0
-                  cache: 'pnpm'
-                  # cache-dependency-path: 'pnpm-lock.yaml'
+                  node-version: '22.18.0'
 
-            - name: Verify pnpm
-              run: pnpm -v
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: '10.14.0'
 
-            - name: Install dependencies (pnpm)
+            - name: Get pnpm store directory
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+            - name: Setup pnpm cache
+              uses: actions/cache@v4
+              with:
+                  path: ${{ env.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
+
+            - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Build
-              run: npm run build
+            - name: Build Astro site
+              run: pnpm run build
 
-            # Check out the target GitHub Pages repo into a subfolder
-            - name: Check out target repo WanManolo.github.io
+            - name: Checkout target repository
               uses: actions/checkout@v4
               with:
-                  repository: wanmanolo/WanManolo.github.io
+                  repository: WanManolo/WanManolo.github.io
                   token: ${{ secrets.PUBLISH_TOKEN }}
-                  path: out-repo
+                  path: target-repo
 
-            # Sync dist -> target repo root (deletes files in target that no longer exist in dist)
-            - name: Sync dist into target repo
+            - name: Clear target repository
               run: |
-                  rsync -av --delete dist/ out-repo/
+                  cd target-repo
+                  find . -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '.' -exec rm -rf {} +
 
-            - name: Configure Git identity
-              working-directory: out-repo
+            - name: Copy build files to target repository
               run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  cp -r dist/* target-repo/
 
-            - name: Commit changes if any
-              id: commit
-              working-directory: out-repo
+            - name: Configure Git
               run: |
-                  if [ -n "$(git status --porcelain)" ]; then
-                    git add -A
-                    git commit -m "Publish from ${GITHUB_REPOSITORY}@${GITHUB_SHA} (PR merge to master)"
-                    echo "changed=true" >> $GITHUB_OUTPUT
-                  else
+                  cd target-repo
+                  git config --local user.email "action@github.com"
+                  git config --local user.name "GitHub Action"
+
+            - name: Commit and push changes
+              run: |
+                  cd target-repo
+                  git add .
+                  if git diff --staged --quiet; then
                     echo "No changes to commit"
-                    echo "changed=false" >> $GITHUB_OUTPUT
+                  else
+                    git commit -m "Deploy from astro-portfolio @ ${{ github.sha }}"
+                    git push
                   fi
-
-            - name: Push
-              if: steps.commit.outputs.changed == 'true'
-              working-directory: out-repo
-              run: |
-                  git remote set-url origin https://x-access-token:${{ secrets.PUBLISH_TOKEN }}@github.com/wanmanolo/WanManolo.github.io.git
-                  git push origin HEAD:main || git push origin HEAD:master

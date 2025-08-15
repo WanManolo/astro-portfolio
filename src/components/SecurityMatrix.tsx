@@ -190,7 +190,6 @@ export default function SecurityMatrix() {
                                             '100%': skill.color + '80',
                                         }}
                                         trailColor="rgba(255, 255, 255, 0.1)"
-                                        strokeWidth={8}
                                         className="tw:skill-progress"
                                     />
                                 </motion.div>

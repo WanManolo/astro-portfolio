@@ -72,25 +72,25 @@ const experiences = [
 
 export default function CyberTimeline() {
     return (
-        <section className="relative py-20">
-            <div className="container mx-auto px-6">
+        <section id={'timeline'} className="tw:relative tw:py-20">
+            <div className="tw:container tw:mx-auto tw:px-6">
                 <motion.div
-                    className="mb-16 text-center"
+                    className="tw:mb-16 tw:text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
+                    <h2 className="tw:font-cyber tw:text-[#39ff14] glow-text tw:mb-4 tw:text-4xl tw:uppercase tw:md:text-5xl">
                         CAREER_TIMELINE.LOG
                     </h2>
-                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
-                        <span className="text-neon-blue">[EXECUTING]</span> Professional journey
+                    <p className="tw:mx-auto tw:max-w-3xl tw:font-mono tw:text-xl tw:text-gray-300">
+                        <span className="text-[#00d4ff]">[EXECUTING]</span> Professional journey
                         through the cybersecurity landscape
                     </p>
                 </motion.div>
 
-                <div className="mx-auto max-w-4xl">
+                <div className="tw:mx-auto tw:max-w-4xl">
                     <Timeline mode="left" className="cyber-timeline">
                         {experiences.map((exp, index) => {
                             const Icon = exp.icon;
@@ -99,7 +99,7 @@ export default function CyberTimeline() {
                                     key={index}
                                     dot={
                                         <motion.div
-                                            className="rounded-full border-2 bg-black/80 p-3"
+                                            className="tw:rounded-full tw:border-2 tw:bg-black/80 tw:p-3"
                                             style={{
                                                 borderColor: exp.color,
                                                 boxShadow: `0 0 20px ${exp.color}50`,
@@ -110,14 +110,14 @@ export default function CyberTimeline() {
                                             viewport={{ once: true }}
                                         >
                                             <Icon
-                                                className="h-6 w-6"
+                                                className="tw:h-6 tw:w-6"
                                                 style={{ color: exp.color }}
                                             />
                                         </motion.div>
                                     }
                                     label={
                                         <motion.div
-                                            className="font-mono text-lg font-bold"
+                                            className="tw:font-mono tw:text-lg tw:font-bold"
                                             style={{ color: exp.color }}
                                             initial={{ opacity: 0, x: -20 }}
                                             whileInView={{ opacity: 1, x: 0 }}
@@ -135,20 +135,20 @@ export default function CyberTimeline() {
                                         viewport={{ once: true }}
                                     >
                                         <Card
-                                            className="neon-border transition-all duration-300 hover:shadow-2xl"
+                                            className="neon-border tw:transition-all tw:duration-300 tw:hover:shadow-2xl"
                                             style={{
                                                 background: 'rgba(26, 26, 26, 0.9)',
                                                 border: `1px solid ${exp.color}`,
                                                 boxShadow: `0 0 20px ${exp.color}20`,
                                             }}
                                         >
-                                            <div className="space-y-4">
-                                                <div className="flex items-center justify-between">
-                                                    <h3 className="font-mono text-xl font-bold text-white">
+                                            <div className="tw:space-y-4">
+                                                <div className="tw:flex tw:items-center tw:justify-between">
+                                                    <h3 className="tw:font-mono tw:text-xl tw:font-bold tw:text-white">
                                                         {exp.title}
                                                     </h3>
                                                     <span
-                                                        className="rounded-full border px-3 py-1 font-mono text-xs"
+                                                        className="tw:rounded-full tw:border tw:px-3 tw:py-1 tw:font-mono tw:text-xs"
                                                         style={{
                                                             color: exp.color,
                                                             borderColor: exp.color,
@@ -159,26 +159,26 @@ export default function CyberTimeline() {
                                                     </span>
                                                 </div>
 
-                                                <div className="font-mono text-gray-400">
+                                                <div className="tw:font-mono tw:text-gray-400">
                                                     {exp.company}
                                                 </div>
 
-                                                <p className="leading-relaxed text-gray-300">
+                                                <p className="tw:leading-relaxed tw:text-gray-300">
                                                     {exp.description}
                                                 </p>
 
-                                                <div className="space-y-2">
-                                                    <h4 className="mb-2 font-mono text-sm font-bold text-white">
+                                                <div className="tw:space-y-2">
+                                                    <h4 className="tw:mb-2 tw:font-mono tw:text-sm tw:font-bold tw:text-white">
                                                         KEY_ACHIEVEMENTS:
                                                     </h4>
                                                     {exp.achievements.map(
                                                         (achievement, achIndex) => (
                                                             <div
                                                                 key={achIndex}
-                                                                className="flex items-center gap-2 font-mono text-sm text-gray-300"
+                                                                className="tw:flex tw:items-center tw:gap-2 tw:font-mono tw:text-sm tw:text-gray-300"
                                                             >
                                                                 <span
-                                                                    className="h-2 w-2 rounded-full"
+                                                                    className="tw:h-2 tw:w-2 tw:rounded-full"
                                                                     style={{
                                                                         background: exp.color,
                                                                     }}

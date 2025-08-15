@@ -61,26 +61,26 @@ const skillLevels = [
 
 export default function SecurityMatrix() {
     return (
-        <section className="relative py-20">
-            <div className="container mx-auto px-6">
+        <section id={'security'} className="tw:relative tw:py-20">
+            <div className="tw:container tw:mx-auto tw:px-6">
                 <motion.div
-                    className="mb-16 text-center"
+                    className="tw:mb-16 tw:text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="font-cyber text-neon-green glow-text mb-4 text-4xl uppercase md:text-5xl">
+                    <h2 className="tw:font-cyber tw:text-[#39ff14] glow-text tw:mb-4 tw:text-4xl tw:uppercase tw:md:text-5xl">
                         SECURITY_MATRIX.EXE
                     </h2>
-                    <p className="mx-auto max-w-3xl font-mono text-xl text-gray-300">
-                        <span className="text-neon-blue">[ANALYZING]</span> Real-time security
+                    <p className="tw:mx-auto tw:max-w-3xl tw:font-mono tw:text-xl tw:text-gray-300">
+                        <span className="tw:text-[#00d4ff]">[ANALYZING]</span> Real-time security
                         metrics and expertise evaluation
                     </p>
                 </motion.div>
 
                 {/* Security Metrics Grid */}
-                <Row gutter={[24, 24]} className="mb-16">
+                <Row gutter={[24, 24]} className="tw:mb-16">
                     {securityMetrics.map((metric, index) => {
                         const Icon = metric.icon;
                         return (
@@ -92,27 +92,27 @@ export default function SecurityMatrix() {
                                     viewport={{ once: true }}
                                 >
                                     <Card
-                                        className="neon-border group h-full transition-all duration-300 hover:shadow-2xl"
+                                        className="neon-border tw:group tw:h-full tw:transition-all tw:duration-300 tw:hover:shadow-2xl"
                                         style={{
                                             background: 'rgba(26, 26, 26, 0.8)',
                                             border: `1px solid ${metric.color}`,
                                             boxShadow: `0 0 20px ${metric.color}20`,
                                         }}
                                     >
-                                        <div className="flex items-start gap-4">
+                                        <div className="tw:flex tw:items-start tw:gap-4">
                                             <div
-                                                className="rounded-lg p-3 group-hover:animate-pulse"
+                                                className="tw:rounded-lg tw:p-3 tw:group-hover:animate-pulse"
                                                 style={{ background: `${metric.color}20` }}
                                             >
                                                 <Icon
-                                                    className="h-8 w-8"
+                                                    className="tw:h-8 tw:w-8"
                                                     style={{ color: metric.color }}
                                                 />
                                             </div>
-                                            <div className="flex-1">
+                                            <div className="tw:flex-1">
                                                 <Statistic
                                                     title={
-                                                        <span className="font-mono text-sm text-gray-300">
+                                                        <span className="tw:font-mono tw:text-sm tw:text-gray-300">
                                                             {metric.title}
                                                         </span>
                                                     }
@@ -126,7 +126,7 @@ export default function SecurityMatrix() {
                                                         textShadow: `0 0 10px ${metric.color}50`,
                                                     }}
                                                 />
-                                                <p className="mt-2 font-mono text-xs text-gray-400">
+                                                <p className="tw:mt-2 tw:font-mono tw:text-xs tw:text-gray-400">
                                                     {metric.description}
                                                 </p>
                                             </div>
@@ -147,7 +147,7 @@ export default function SecurityMatrix() {
                 >
                     <Card
                         title={
-                            <span className="font-cyber text-neon-green glow-text text-xl uppercase">
+                            <span className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-xl tw:uppercase">
                                 EXPERTISE_LEVELS.JSON
                             </span>
                         }
@@ -158,22 +158,22 @@ export default function SecurityMatrix() {
                             boxShadow: '0 0 30px rgba(0, 255, 0, 0.2)',
                         }}
                     >
-                        <div className="space-y-6">
+                        <div className="tw:space-y-6">
                             {skillLevels.map((skill, index) => (
                                 <motion.div
                                     key={skill.name}
-                                    className="space-y-2"
+                                    className="tw:space-y-2"
                                     initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
                                     viewport={{ once: true }}
                                 >
-                                    <div className="flex items-center justify-between">
-                                        <span className="font-mono text-sm text-gray-300">
+                                    <div className="tw:flex tw:items-center tw:justify-between">
+                                        <span className="tw:font-mono tw:text-sm tw:text-gray-300">
                                             {skill.name}
                                         </span>
                                         <span
-                                            className="font-mono text-sm font-bold"
+                                            className="tw:font-mono tw:text-sm tw:font-bold"
                                             style={{
                                                 color: skill.color,
                                                 textShadow: `0 0 5px ${skill.color}50`,
@@ -191,7 +191,7 @@ export default function SecurityMatrix() {
                                         }}
                                         trailColor="rgba(255, 255, 255, 0.1)"
                                         strokeWidth={8}
-                                        className="skill-progress"
+                                        className="tw:skill-progress"
                                     />
                                 </motion.div>
                             ))}

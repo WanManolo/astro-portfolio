@@ -56,15 +56,15 @@ export default function TerminalHero() {
     }, [currentLineIndex, currentCharIndex]);
 
     return (
-        <section className="relative flex min-h-screen items-center justify-center overflow-hidden p-6">
+        <section className="tw:relative tw:flex tw:min-h-screen tw:items-center tw:justify-center tw:overflow-hidden tw:p-6">
             {/* Grid Background */}
-            <div className="bg-cyber-grid absolute inset-0 opacity-20"></div>
+            <div className="tw:bg-cyber-grid tw:absolute tw:inset-0 tw:opacity-20"></div>
 
-            <div className="relative z-10 container mx-auto max-w-6xl">
-                <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="tw:relative tw:z-10 tw:container tw:mx-auto tw:max-w-6xl">
+                <div className="tw:grid tw:items-center tw:gap-12 tw:lg:grid-cols-2">
                     {/* Terminal Window */}
                     <motion.div
-                        className="terminal-window tw:border-neon-green"
+                        className="terminal-window tw:border-[#39ff14]"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
@@ -73,18 +73,18 @@ export default function TerminalHero() {
                             <div className="terminal-dot red"></div>
                             <div className="terminal-dot yellow"></div>
                             <div className="terminal-dot green"></div>
-                            <span className="ml-4 font-mono text-sm text-gray-400">
+                            <span className="tw:ml-4 tw:font-mono tw:text-sm tw:text-gray-400">
                                 root@infosec-terminal
                             </span>
                         </div>
 
-                        <div className="min-h-[400px] bg-black/90 p-6 font-mono text-sm">
+                        <div className="tw:min-h-[400px] tw:bg-black/90 tw:p-6 tw:font-mono tw:text-sm">
                             {displayedLines.map((line, index) => (
-                                <div key={index} className="mb-2">
-                                    <span className="text-neon-green glow-text">
+                                <div key={index} className="tw:mb-2">
+                                    <span className="tw:text-[#39ff14] glow-text">
                                         {line}
                                         {index === currentLineIndex && (
-                                            <span className="animate-blink text-neon-green">█</span>
+                                            <span className="tw:animate-blink tw:text-[#39ff14]">█</span>
                                         )}
                                     </span>
                                 </div>
@@ -94,21 +94,21 @@ export default function TerminalHero() {
 
                     {/* Profile Info */}
                     <motion.div
-                        className="space-y-8"
+                        className="tw:space-y-8"
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <div className="space-y-4">
+                        <div className="tw:space-y-4">
                             <motion.h1
-                                className="font-cyber text-neon-green glow-text text-5xl tracking-wider uppercase md:text-6xl"
+                                className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-5xl tw:tracking-wider tw:uppercase tw:md:text-6xl"
                                 data-text="JUAN MANUEL"
                             >
                                 JUAN MANUEL
                             </motion.h1>
 
                             <motion.h2
-                                className="text-neon-blue glow-text font-mono text-2xl md:text-3xl"
+                                className="tw:text-[#00d4ff] glow-text tw:font-mono tw:text-2xl tw:md:text-3xl"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1 }}
@@ -116,24 +116,24 @@ export default function TerminalHero() {
                                 RODRIGUEZ_
                             </motion.h2>
 
-                            <div className="mt-6 flex flex-wrap gap-4">
-                                <div className="neon-border flex items-center gap-2 rounded px-4 py-2">
-                                    <Shield className="text-neon-green h-5 w-5" />
-                                    <span className="text-neon-green font-mono text-sm">
+                            <div className="tw:mt-6 tw:flex tw:flex-wrap tw:gap-4">
+                                <div className="neon-border tw:flex tw:items-center tw:gap-2 tw:rounded tw:px-4 tw:py-2">
+                                    <Shield className="text-[#39ff14] tw:h-5 tw:w-5" />
+                                    <span className="text-[#39ff14] tw:font-mono tw:text-sm">
                                         INFOSEC_LEADER
                                     </span>
                                 </div>
 
-                                <div className="neon-border flex items-center gap-2 rounded px-4 py-2">
-                                    <Code className="text-neon-blue h-5 w-5" />
-                                    <span className="text-neon-blue font-mono text-sm">
+                                <div className="neon-border tw:flex tw:items-center tw:gap-2 tw:rounded tw:px-4 tw:py-2">
+                                    <Code className="tw:text-[#00d4ff] tw:h-5 tw:w-5" />
+                                    <span className="tw:text-[#00d4ff] tw:font-mono tw:text-sm">
                                         SENIOR_ENGINEER
                                     </span>
                                 </div>
 
-                                <div className="neon-border flex items-center gap-2 rounded px-4 py-2">
-                                    <Users className="text-neon-purple h-5 w-5" />
-                                    <span className="text-neon-purple font-mono text-sm">
+                                <div className="neon-border tw:flex tw:items-center tw:gap-2 tw:rounded tw:px-4 tw:py-2">
+                                    <Users className="tw:text-[#bf00ff] tw:h-5 tw:w-5" />
+                                    <span className="tw:text-[#bf00ff] tw:font-mono tw:text-sm">
                                         TEAM_LEAD
                                     </span>
                                 </div>
@@ -141,28 +141,28 @@ export default function TerminalHero() {
                         </div>
 
                         <motion.div
-                            className="space-y-4"
+                            className="tw:space-y-4"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.5 }}
                         >
-                            <p className="font-mono text-lg leading-relaxed text-gray-300">
-                                <span className="text-neon-green">[MISSION]</span> Building secure,
+                            <p className="tw:font-mono tw:text-lg tw:leading-relaxed tw:text-gray-300">
+                                <span className="tw:text-[#39ff14]">[MISSION]</span> Building secure,
                                 scalable applications while leading high-performance teams to
                                 deliver exceptional results in the cybersecurity landscape.
                             </p>
 
-                            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                                <button className="cyber-btn group">
-                                    <span className="flex items-center gap-2">
-                                        <Terminal className="h-5 w-5" />
+                            <div className="tw:mt-8 tw:flex tw:flex-col tw:gap-4 tw:sm:flex-row">
+                                <button className="cyber-btn tw:group">
+                                    <span className="tw:flex tw:items-center tw:gap-2">
+                                        <Terminal className="tw:h-5 tw:w-5" />
                                         ACCESS_PORTFOLIO
                                     </span>
                                 </button>
 
-                                <button className="cyber-btn group">
-                                    <span className="flex items-center gap-2">
-                                        <Shield className="h-5 w-5" />
+                                <button className="cyber-btn tw:group">
+                                    <span className="tw:flex tw:items-center tw:gap-2">
+                                        <Shield className="tw:h-5 tw:w-5" />
                                         CONNECT_SECURE
                                     </span>
                                 </button>
@@ -174,7 +174,7 @@ export default function TerminalHero() {
 
             {/* ASCII Art Decoration */}
             <motion.div
-                className="ascii-art text-neon-green absolute right-10 bottom-10 opacity-30"
+                className="ascii-art tw:text-[#39ff14] tw:absolute tw:right-10 tw:bottom-10 tw:opacity-30"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
                 transition={{ delay: 2 }}

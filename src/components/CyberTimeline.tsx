@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Timeline, Card } from 'antd';
 import { motion } from 'framer-motion';
 import { ShieldIcon, CodeIcon, UsersIcon, ServerIcon, LockIcon, ZapIcon } from 'lucide-react';
@@ -71,6 +71,103 @@ const experiences = [
 ];
 
 export default function CyberTimeline() {
+    const timelineItems = useMemo(() => {
+        return experiences.map((exp, index) => {
+            const Icon = exp.icon;
+            return {
+                key: index,
+                dot: (
+                    <motion.div
+                        className="tw:rounded-full tw:border-2 tw:bg-black/80 tw:p-3"
+                        style={{
+                            borderColor: exp.color,
+                            boxShadow: `0 0 20px ${exp.color}50`,
+                        }}
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <Icon className="tw:h-6 tw:w-6" style={{ color: exp.color }} />
+                    </motion.div>
+                ),
+                label: (
+                    <motion.div
+                        className="tw:font-mono tw:text-lg tw:font-bold"
+                        style={{ color: exp.color }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                    >
+                        {exp.year}
+                    </motion.div>
+                ),
+                children: (
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <Card
+                            className="neon-border tw:transition-all tw:duration-300 tw:hover:shadow-2xl"
+                            style={{
+                                background: 'rgba(26, 26, 26, 0.9)',
+                                border: `1px solid ${exp.color}`,
+                                boxShadow: `0 0 20px ${exp.color}20`,
+                            }}
+                        >
+                            <div className="tw:space-y-4">
+                                <div className="tw:flex tw:items-center tw:justify-between">
+                                    <h3 className="tw:font-mono tw:text-xl tw:font-bold tw:text-white">
+                                        {exp.title}
+                                    </h3>
+                                    <span
+                                        className="tw:rounded-full tw:border tw:px-3 tw:py-1 tw:font-mono tw:text-xs"
+                                        style={{
+                                            color: exp.color,
+                                            borderColor: exp.color,
+                                            background: `${exp.color}20`,
+                                        }}
+                                    >
+                                        {exp.status}
+                                    </span>
+                                </div>
+
+                                <div className="tw:font-mono tw:text-gray-400">{exp.company}</div>
+
+                                <p className="tw:leading-relaxed tw:text-gray-300">
+                                    {exp.description}
+                                </p>
+
+                                <div className="tw:space-y-2">
+                                    <h4 className="tw:mb-2 tw:font-mono tw:text-sm tw:font-bold tw:text-white">
+                                        KEY_ACHIEVEMENTS:
+                                    </h4>
+                                    {exp.achievements.map((achievement, achIndex) => (
+                                        <div
+                                            key={achIndex}
+                                            className="tw:flex tw:items-center tw:gap-2 tw:font-mono tw:text-sm tw:text-gray-300"
+                                        >
+                                            <span
+                                                className="tw:h-2 tw:w-2 tw:rounded-full"
+                                                style={{
+                                                    background: exp.color,
+                                                }}
+                                            ></span>
+                                            {achievement}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </Card>
+                    </motion.div>
+                ),
+            };
+        });
+    }, []);
+
     return (
         <section id={'timeline'} className="tw:relative tw:py-20">
             <div className="tw:container tw:mx-auto tw:px-6">
@@ -91,110 +188,7 @@ export default function CyberTimeline() {
                 </motion.div>
 
                 <div className="tw:mx-auto tw:max-w-4xl">
-                    <Timeline mode="left" className="cyber-timeline">
-                        {experiences.map((exp, index) => {
-                            const Icon = exp.icon;
-                            return (
-                                <Timeline.Item
-                                    key={index}
-                                    dot={
-                                        <motion.div
-                                            className="tw:rounded-full tw:border-2 tw:bg-black/80 tw:p-3"
-                                            style={{
-                                                borderColor: exp.color,
-                                                boxShadow: `0 0 20px ${exp.color}50`,
-                                            }}
-                                            initial={{ scale: 0 }}
-                                            whileInView={{ scale: 1 }}
-                                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                                            viewport={{ once: true }}
-                                        >
-                                            <Icon
-                                                className="tw:h-6 tw:w-6"
-                                                style={{ color: exp.color }}
-                                            />
-                                        </motion.div>
-                                    }
-                                    label={
-                                        <motion.div
-                                            className="tw:font-mono tw:text-lg tw:font-bold"
-                                            style={{ color: exp.color }}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                                            viewport={{ once: true }}
-                                        >
-                                            {exp.year}
-                                        </motion.div>
-                                    }
-                                >
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ duration: 0.6, delay: index * 0.2 }}
-                                        viewport={{ once: true }}
-                                    >
-                                        <Card
-                                            className="neon-border tw:transition-all tw:duration-300 tw:hover:shadow-2xl"
-                                            style={{
-                                                background: 'rgba(26, 26, 26, 0.9)',
-                                                border: `1px solid ${exp.color}`,
-                                                boxShadow: `0 0 20px ${exp.color}20`,
-                                            }}
-                                        >
-                                            <div className="tw:space-y-4">
-                                                <div className="tw:flex tw:items-center tw:justify-between">
-                                                    <h3 className="tw:font-mono tw:text-xl tw:font-bold tw:text-white">
-                                                        {exp.title}
-                                                    </h3>
-                                                    <span
-                                                        className="tw:rounded-full tw:border tw:px-3 tw:py-1 tw:font-mono tw:text-xs"
-                                                        style={{
-                                                            color: exp.color,
-                                                            borderColor: exp.color,
-                                                            background: `${exp.color}20`,
-                                                        }}
-                                                    >
-                                                        {exp.status}
-                                                    </span>
-                                                </div>
-
-                                                <div className="tw:font-mono tw:text-gray-400">
-                                                    {exp.company}
-                                                </div>
-
-                                                <p className="tw:leading-relaxed tw:text-gray-300">
-                                                    {exp.description}
-                                                </p>
-
-                                                <div className="tw:space-y-2">
-                                                    <h4 className="tw:mb-2 tw:font-mono tw:text-sm tw:font-bold tw:text-white">
-                                                        KEY_ACHIEVEMENTS:
-                                                    </h4>
-                                                    {exp.achievements.map(
-                                                        (achievement, achIndex) => (
-                                                            <div
-                                                                key={achIndex}
-                                                                className="tw:flex tw:items-center tw:gap-2 tw:font-mono tw:text-sm tw:text-gray-300"
-                                                            >
-                                                                <span
-                                                                    className="tw:h-2 tw:w-2 tw:rounded-full"
-                                                                    style={{
-                                                                        background: exp.color,
-                                                                    }}
-                                                                ></span>
-                                                                {achievement}
-                                                            </div>
-                                                        )
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </Card>
-                                    </motion.div>
-                                </Timeline.Item>
-                            );
-                        })}
-                    </Timeline>
+                    <Timeline mode="left" className="cyber-timeline" items={timelineItems} />
                 </div>
             </div>
         </section>

@@ -53,7 +53,7 @@ export default function CyberNavigation() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="tw:border-[#39ff14] tw:bg-[#39ff14]/20 tw:flex tw:h-8 w-8 tw:items-center tw:justify-center tw:rounded tw:border-2">
+                            <div className="tw:border-[#39ff14] tw:bg-[#39ff14]/20 tw:flex tw:h-8 tw:items-center tw:justify-center tw:rounded tw:border-2 w-8">
                                 <TerminalIcon className="tw:text-[#39ff14] tw:h-5 tw:w-5" />
                             </div>
                             <span className="tw:font-cyber tw:text-[#39ff14] glow-text tw:text-xl">
@@ -87,7 +87,9 @@ export default function CyberNavigation() {
                         {/* Status Indicator */}
                         <div className="tw:hidden tw:items-center tw:gap-2 tw:md:flex">
                             <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
-                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">ONLINE</span>
+                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">
+                                ONLINE
+                            </span>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -106,7 +108,9 @@ export default function CyberNavigation() {
             {/* Mobile Menu Drawer */}
             <Drawer
                 title={
-                    <span className="tw:font-cyber tw:text-[#39ff14] glow-text">NAVIGATION_MENU</span>
+                    <span className="tw:font-cyber tw:text-[#39ff14] glow-text">
+                        NAVIGATION_MENU
+                    </span>
                 }
                 placement="right"
                 onClose={() => setIsMobileMenuOpen(false)}
@@ -114,13 +118,15 @@ export default function CyberNavigation() {
                 style={{
                     background: 'rgba(10, 10, 10, 0.95)',
                 }}
-                headerStyle={{
-                    background: 'rgba(10, 10, 10, 0.95)',
-                    borderBottom: '1px solid #00ff00',
-                }}
-                bodyStyle={{
-                    background: 'rgba(10, 10, 10, 0.95)',
-                    padding: '20px',
+                styles={{
+                    header: {
+                        background: 'rgba(10, 10, 10, 0.95)',
+                        borderBottom: '1px solid #00ff00',
+                    },
+                    body: {
+                        background: 'rgba(10, 10, 10, 0.95)',
+                        padding: '20px',
+                    },
                 }}
             >
                 <div className="tw:space-y-6">
@@ -130,7 +136,7 @@ export default function CyberNavigation() {
                             <motion.a
                                 key={item.key}
                                 href={item.href}
-                                className="neon-border tw:hover:text-[#39ff14] tw:flex tw:items-center tw:gap-3 tw:rounded p-3 tw:text-gray-300 tw:transition-colors"
+                                className="neon-border tw:hover:text-[#39ff14] tw:flex tw:items-center tw:gap-3 tw:rounded tw:text-gray-300 tw:transition-colors p-3"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 whileHover={{ x: 10 }}
                                 whileTap={{ scale: 0.95 }}
@@ -144,7 +150,9 @@ export default function CyberNavigation() {
                     <div className="neon-border tw:mt-8 tw:rounded tw:p-4">
                         <div className="tw:mb-2 tw:flex tw:items-center tw:gap-2">
                             <div className="tw:bg-[#39ff14] tw:h-2 tw:w-2 tw:animate-pulse tw:rounded-full"></div>
-                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">STATUS</span>
+                            <span className="tw:text-[#39ff14] tw:font-mono tw:text-xs">
+                                STATUS
+                            </span>
                         </div>
                         <p className="tw:font-mono tw:text-sm tw:text-gray-300">
                             Available for leadership roles

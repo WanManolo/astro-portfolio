@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Card, Tabs, Badge, Progress } from 'antd';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -85,6 +85,85 @@ const skillCategories = {
 export default function CyberSkills() {
     const [activeTab, setActiveTab] = useState('frontend');
 
+    const tabItems = useMemo(() => {
+        return Object.entries(skillCategories).map(([key, category]) => {
+            const Icon = category.icon;
+            return {
+                key: key,
+                label: (
+                    <span className="tw:flex tw:items-center tw:gap-2 tw:font-mono">
+                        <Icon className="tw:h-5 tw:w-5" />
+                        {category.title}
+                    </span>
+                ),
+                // icon: category.icon,
+                children: (
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={key}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="tw:grid tw:gap-6 tw:md:grid-cols-2"
+                        >
+                            {category.skills.map((skill, index) => (
+                                <motion.div
+                                    key={skill.name}
+                                    className="neon-border tw:space-y-3 tw:rounded-lg tw:p-4"
+                                    style={{
+                                        background: `${category.color}10`,
+                                        border: `1px solid ${category.color}30`,
+                                    }}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                        duration: 0.4,
+                                        delay: index * 0.1,
+                                    }}
+                                >
+                                    <div className="tw:flex tw:items-center tw:justify-between">
+                                        <h4 className="tw:font-mono tw:font-semibold tw:text-white">
+                                            {skill.name}
+                                        </h4>
+                                        <div className="tw:flex tw:items-center tw:gap-2">
+                                            <Badge
+                                                count={`${skill.years}y`}
+                                                style={{
+                                                    background: category.color,
+                                                    color: '#000',
+                                                }}
+                                            />
+                                            <span
+                                                className="tw:font-mono tw:text-sm tw:font-bold"
+                                                style={{
+                                                    color: category.color,
+                                                    textShadow: `0 0 5px ${category.color}50`,
+                                                }}
+                                            >
+                                                {skill.level}%
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <Progress
+                                        percent={skill.level}
+                                        showInfo={false}
+                                        strokeColor={{
+                                            '0%': category.color,
+                                            '100%': category.color + '80',
+                                        }}
+                                        trailColor="rgba(255, 255, 255, 0.1)"
+                                        size={"small"}
+                                    />
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                ),
+            };
+        });
+    }, []);
+
     return (
         <section id={'skills'} className="tw:relative tw:py-20">
             <div className="tw:container tw:mx-auto tw:px-6">
@@ -125,84 +204,8 @@ export default function CyberSkills() {
                             centered
                             size="large"
                             className="cyber-tabs"
-                        >
-                            {Object.entries(skillCategories).map(([key, category]) => {
-                                const Icon = category.icon;
-                                return (
-                                    <TabPane
-                                        key={key}
-                                        tab={
-                                            <span className="tw:flex tw:items-center tw:gap-2 tw:font-mono">
-                                                <Icon className="tw:h-5 tw:w-5" />
-                                                {category.title}
-                                            </span>
-                                        }
-                                    >
-                                        <AnimatePresence mode="wait">
-                                            <motion.div
-                                                key={key}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: -20 }}
-                                                transition={{ duration: 0.3 }}
-                                                className="tw:grid tw:gap-6 tw:md:grid-cols-2"
-                                            >
-                                                {category.skills.map((skill, index) => (
-                                                    <motion.div
-                                                        key={skill.name}
-                                                        className="neon-border tw:space-y-3 tw:rounded-lg tw:p-4"
-                                                        style={{
-                                                            background: `${category.color}10`,
-                                                            border: `1px solid ${category.color}30`,
-                                                        }}
-                                                        initial={{ opacity: 0, x: -20 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{
-                                                            duration: 0.4,
-                                                            delay: index * 0.1,
-                                                        }}
-                                                    >
-                                                        <div className="tw:flex tw:items-center tw:justify-between">
-                                                            <h4 className="tw:font-mono tw:font-semibold tw:text-white">
-                                                                {skill.name}
-                                                            </h4>
-                                                            <div className="tw:flex tw:items-center tw:gap-2">
-                                                                <Badge
-                                                                    count={`${skill.years}y`}
-                                                                    style={{
-                                                                        background: category.color,
-                                                                        color: '#000',
-                                                                    }}
-                                                                />
-                                                                <span
-                                                                    className="tw:font-mono tw:text-sm tw:font-bold"
-                                                                    style={{
-                                                                        color: category.color,
-                                                                        textShadow: `0 0 5px ${category.color}50`,
-                                                                    }}
-                                                                >
-                                                                    {skill.level}%
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <Progress
-                                                            percent={skill.level}
-                                                            showInfo={false}
-                                                            strokeColor={{
-                                                                '0%': category.color,
-                                                                '100%': category.color + '80',
-                                                            }}
-                                                            trailColor="rgba(255, 255, 255, 0.1)"
-                                                            strokeWidth={6}
-                                                        />
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
-                                        </AnimatePresence>
-                                    </TabPane>
-                                );
-                            })}
-                        </Tabs>
+                            items={tabItems}
+                        />
                     </Card>
                 </motion.div>
             </div>

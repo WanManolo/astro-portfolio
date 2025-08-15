@@ -82,5 +82,5 @@ jobs:
               if: steps.commit.outputs.changed == 'true'
               working-directory: out-repo
               run: |
+                  git remote set-url origin https://x-access-token:${{ secrets.PUBLISH_TOKEN }}@github.com/wanmanolo/WanManolo.github.io.git
                   git push origin HEAD:main || git push origin HEAD:master
-

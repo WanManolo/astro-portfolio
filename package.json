@@ -14,7 +14,7 @@
     "dependencies": {
         "@ant-design/colors": "^7.2.1",
         "@ant-design/icons": "^6.0.0",
-        "@astrojs/react": "^4.3.0",
+        "@astrojs/react": "^5.0.3",
         "@fontsource/jetbrains-mono": "^5.2.6",
         "@fontsource/orbitron": "^5.2.6",
         "@fontsource/source-code-pro": "^5.2.6",
@@ -22,7 +22,7 @@
         "@types/react": "^19.1.10",
         "@types/react-dom": "^19.1.7",
         "antd": "^5.27.0",
-        "astro": "^5.13.0",
+        "astro": "^6.1.5",
         "framer-motion": "^12.23.12",
         "lucide-react": "^0.539.0",
         "react": "^19.1.1",
@@ -41,8 +41,8 @@
             "prettier --write"
         ]
     },
-  "engines": {
-    "node": "22.18.0"
-  },
-  "packageManager": "pnpm@10.14.0"
+    "engines": {
+        "node": "22.18.0"
+    },
+    "packageManager": "pnpm@10.14.0"
 }

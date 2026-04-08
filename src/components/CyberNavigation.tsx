@@ -72,7 +72,7 @@ export default function CyberNavigation() {
                                         className={`tw:flex tw:items-center tw:gap-2 tw:font-mono tw:text-sm tw:transition-all tw:duration-300 ${
                                             activeSection === item.key
                                                 ? 'tw:text-[#39ff14] glow-text'
-                                                : 'hover:tw:text-[#39ff14] tw:text-gray-400'
+                                                : 'tw:hover:text-[#39ff14] tw:text-gray-400'
                                         }`}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.9 }}

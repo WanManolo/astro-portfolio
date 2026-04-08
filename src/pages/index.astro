@@ -1,39 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TerminalHero from '../components/TerminalHero';
-import SecurityMatrix from '../components/SecurityMatrix';
-import CyberTimeline from '../components/CyberTimeline';
-import CyberSkills from '../components/CyberSkills';
-import HackerContact from '../components/HackerContact';
-import CyberNavigation from '../components/CyberNavigation';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import Expertise from '../components/Expertise';
+import Experience from '../components/Experience';
+import Contact from '../components/Contact';
+import { motion } from 'framer-motion';
 ---
 
-<Layout title="Juan Manuel Rodríguez | Senior Software Engineer">
-    <CyberNavigation client:load />
+<Layout title="Juanma Rodríguez | Staff Software Engineer — Backend & Security">
+    <Navbar client:load />
 
     <main>
-        <TerminalHero client:load />
-        <SecurityMatrix client:load />
-        <CyberSkills client:load />
-        <CyberTimeline client:load />
-        <HackerContact client:load />
+        <Hero client:load />
+
+        <!-- About Section -->
+        <section id="about" className="section-container">
+            <div className="tw:grid tw:lg:grid-cols-[0.8fr,1.2fr] tw:gap-16 tw:items-center">
+                <div className="tw:relative">
+                    <div className="tw:aspect-square tw:rounded-3xl tw:bg-slate-100 tw:dark:bg-slate-900 tw:overflow-hidden tw:border tw:border-slate-200 tw:dark:border-slate-800">
+                        <!-- Placeholder for professional photo -->
+                        <div className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center tw:text-slate-300 tw:dark:text-slate-700">
+                            <span className="tw:font-display tw:text-8xl">JR</span>
+                        </div>
+                    </div>
+                    <div className="tw:absolute tw:-bottom-6 tw:-right-6 tw:bg-brand-500 tw:text-white tw:p-6 tw:rounded-2xl tw:shadow-xl">
+                        <div className="tw:text-3xl tw:font-bold">10+</div>
+                        <div className="tw:text-xs tw:font-mono tw:uppercase tw:tracking-wider tw:opacity-80">Years Experience</div>
+                    </div>
+                </div>
+
+                <div className="tw:space-y-6">
+                    <h2 className="tw:text-sm tw:font-mono tw:text-brand-500 tw:uppercase tw:tracking-widest">
+                        The Profile
+                    </h2>
+                    <h3 className="tw:text-4xl tw:font-display tw:font-bold">
+                        Engineering with a <span className="tw:text-brand-500">Security</span> Mindset
+                    </h3>
+                    <p className="tw:text-lg tw:text-slate-600 tw:dark:text-slate-400 tw:leading-relaxed">
+                        I am a Staff Software Engineer with a deep background in backend systems and cybersecurity. My career has been focused on building distributed architectures that are not only scalable and performant but inherently secure from the ground up.
+                    </p>
+                    <p className="tw:text-lg tw:text-slate-600 tw:dark:text-slate-400 tw:leading-relaxed">
+                        With a Master's focus in cybersecurity management and offensive security, I bring a unique "ethical hacker" perspective to engineering leadership. I specialize in Identity and Access Management (IAM), helping organizations harden their authentication flows and protect sensitive user data across complex, distributed environments.
+                    </p>
+                    
+                    <div className="tw:grid tw:grid-cols-2 tw:gap-8 tw:pt-6">
+                        <div>
+                            <div className="tw:font-bold tw:mb-1 tw:dark:text-white">Location</div>
+                            <div className="tw:text-slate-500">Granada, Spain (EMEA Remote)</div>
+                        </div>
+                        <div>
+                            <div className="tw:font-bold tw:mb-1 tw:dark:text-white">Education</div>
+                            <div className="tw:text-slate-500">Ingeniería Informática Superior</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Expertise client:load />
+        <Experience client:load />
+        <Contact client:load />
     </main>
+
+    <footer className="tw:border-t tw:border-slate-100 tw:dark:border-slate-900 tw:py-12">
+        <div className="tw:max-w-6xl tw:mx-auto tw:px-6 tw:flex tw:flex-col tw:md:flex-row tw:justify-between tw:items-center tw:gap-6">
+            <div className="tw:font-display tw:font-bold tw:text-slate-400">
+                JR<span className="tw:text-brand-500">.</span>ENGINEERING
+            </div>
+            <div className="tw:text-sm tw:text-slate-500">
+                © {new Date().getFullYear()} Juanma Rodríguez. Built with Astro & React.
+            </div>
+            <div className="tw:flex tw:gap-6">
+                <a href="#" className="tw:text-slate-400 tw:hover:text-brand-500">LinkedIn</a>
+                <a href="#" className="tw:text-slate-400 tw:hover:text-brand-500">GitHub</a>
+            </div>
+        </div>
+    </footer>
 </Layout>
 
 <style>
-    /* Custom scrollbar for the entire page */
     html {
         scroll-behavior: smooth;
-    }
-
-    /* Custom selection color */
-    ::selection {
-        background: rgba(0, 255, 0, 0.3);
-        color: #00ff00;
-    }
-
-    ::-moz-selection {
-        background: rgba(0, 255, 0, 0.3);
-        color: #00ff00;
     }
 </style>

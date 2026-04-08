@@ -1,15 +1,50 @@
 @import 'tailwindcss' prefix(tw);
 @import 'tailwindcss/utilities';
 
-/* Custom Cyber Styles */
+@theme {
+    --color-brand-50: #f0f9fa;
+    --color-brand-100: #d9f2f5;
+    --color-brand-200: #b7e5eb;
+    --color-brand-300: #86d0da;
+    --color-brand-400: #4eb2c1;
+    --color-brand-500: #3396a7;
+    --color-brand-600: #2d7a8a;
+    --color-brand-700: #296472;
+    --color-brand-800: #27525e;
+    --color-brand-900: #244650;
+    --color-brand-950: #132d36;
+
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
+
+    --font-sans: 'Inter', 'system-ui', 'sans-serif';
+    --font-mono: 'JetBrains Mono', 'Source Code Pro', 'monospace';
+    --font-display: 'Orbitron', 'sans-serif';
+
+    --animate-fade-in: fadeIn 0.5s ease-out forwards;
+    --animate-slide-up: slideUp 0.5s ease-out forwards;
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+}
+
 @layer base {
+    :root {
+        --brand-primary: #3396a7;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-        background: #0a0a0a;
-        background-image:
-            radial-gradient(circle at 25% 25%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
-        background-size: 100% 100%;
-        background-attachment: fixed;
+        @apply tw:transition-colors tw:duration-300;
     }
 
     /* Scrollbar Styling */
@@ -18,224 +53,63 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: #1a1a1a;
+        @apply tw:bg-slate-100 tw:dark:bg-slate-900;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, #00ff00, #00cc00);
-        border-radius: 4px;
+        @apply tw:bg-slate-300 tw:dark:bg-slate-800 tw:rounded-full;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #00ff00, #008800);
+        @apply tw:bg-brand-500;
     }
 }
 
 @layer components {
-    /* Terminal Window */
-    .terminal-window {
-        @apply tw:overflow-hidden tw:rounded-lg tw:border tw:border-[#39ff14] tw:bg-gray-900 tw:shadow-2xl;
-        box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    .section-container {
+        @apply tw:max-w-6xl tw:mx-auto tw:px-6 tw:py-24;
     }
 
-    .terminal-header {
-        @apply tw:flex tw:items-center tw:gap-2 tw:border-b tw:border-[#39ff14] tw:bg-gray-800 tw:px-4 tw:py-2;
+    .badge {
+        @apply tw:inline-flex tw:items-center tw:px-2.5 tw:py-0.5 tw:rounded-full tw:text-xs tw:font-medium tw:font-mono;
     }
 
-    .terminal-dot {
-        @apply tw:h-3 tw:w-3 tw:rounded-full;
+    .badge-brand {
+        @apply tw:bg-brand-50 tw:text-brand-700 tw:dark:bg-brand-900/30 tw:dark:text-brand-300 tw:border tw:border-brand-200 tw:dark:border-brand-800;
     }
 
-    .terminal-dot.red {
-        @apply tw:bg-red-500;
-    }
-    .terminal-dot.yellow {
-        @apply tw:bg-yellow-500;
-    }
-    .terminal-dot.green {
-        @apply tw:bg-green-500;
+    .heading-gradient {
+        @apply tw:bg-clip-text tw:text-transparent tw:bg-gradient-to-r tw:from-slate-900 tw:to-brand-600 tw:dark:from-white tw:dark:to-brand-400;
     }
 
-    /* Glowing Text */
-    .glow-text {
-        text-shadow:
-            0 0 5px currentColor,
-            0 0 10px currentColor,
-            0 0 20px currentColor;
+    .btn {
+        @apply tw:inline-flex tw:items-center tw:justify-center tw:px-6 tw:py-3 tw:rounded-lg tw:font-medium tw:transition-all tw:duration-200;
     }
 
-    /* Neon Border */
-    .neon-border {
-        border: 1px solid transparent;
-        background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 212, 255, 0.1));
-        box-shadow:
-            0 0 10px rgba(0, 255, 0, 0.3),
-            inset 0 0 10px rgba(0, 255, 0, 0.1);
+    .btn-primary {
+        @apply tw:bg-brand-500 tw:text-white tw:hover:bg-brand-600 tw:shadow-lg tw:hover:shadow-brand-500/25;
     }
 
-    /* Cyber Button */
-    .cyber-btn {
-        @apply tw:relative tw:border-2 tw:bg-transparent tw:border-[#39ff14] tw:text-[#39ff14] tw:px-6 tw:py-3 tw:font-mono tw:tracking-wider tw:uppercase tw:transition-all tw:duration-300;
-        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
-    }
-
-    .cyber-btn::before {
-        content: '';
-        @apply tw:absolute tw:inset-0 tw:border-[#39ff14] tw:opacity-0 tw:transition-opacity tw:duration-300;
-        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
-        z-index: -1;
-    }
-
-    .cyber-btn:hover::before {
-        @apply tw:opacity-20;
-    }
-
-    .cyber-btn:hover {
-        @apply tw:shadow-lg;
-        box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
-        text-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
-    }
-
-    /* ASCII Art Container */
-    .ascii-art {
-        @apply tw:font-mono tw:text-xs tw:leading-none tw:whitespace-pre;
-        text-shadow: 0 0 5px currentColor;
-    }
-
-    /* Typing Animation */
-    .typing-text {
-        @apply tw:border-r-2 tw:border-[#39ff14];
-        animation:
-            type 3.5s steps(40, end),
-            blink 1s infinite;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    /* Glitch Effect */
-    .glitch {
-        position: relative;
-        color: #00ff00;
-    }
-
-    .glitch::before,
-    .glitch::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .glitch::before {
-        animation: glitch1 0.3s infinite linear alternate-reverse;
-        color: #ff00ff;
-        z-index: -1;
-    }
-
-    .glitch::after {
-        animation: glitch2 0.3s infinite linear alternate-reverse;
-        color: #00ffff;
-        z-index: -2;
-    }
-
-    @keyframes glitch1 {
-        0% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        10% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        20% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        30% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        40% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        50% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        60% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        70% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        80% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        90% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        100% {
-            clip: rect(0, 900px, 0, 0);
-        }
-    }
-
-    @keyframes glitch2 {
-        0% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        10% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        20% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        30% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        40% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        50% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        60% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        70% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        80% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        90% {
-            clip: rect(0, 900px, 0, 0);
-        }
-        100% {
-            clip: rect(0, 900px, 0, 0);
-        }
+    .btn-secondary {
+        @apply tw:bg-white tw:dark:bg-slate-900 tw:text-slate-900 tw:dark:text-white tw:border tw:border-slate-200 tw:dark:border-slate-800 tw:hover:bg-slate-50 tw:dark:hover:bg-slate-800;
     }
 }
 
-/* Ant Design Dark Theme Overrides */
-.ant-layout {
-    background: transparent !important;
+/* Ant Design Overrides for Professional Look */
+.dark .ant-card {
+    background: #0f172a !important;
+    border: 1px solid #1e293b !important;
 }
 
 .ant-card {
-    background: rgba(26, 26, 26, 0.8) !important;
-    border: 1px solid #00ff00 !important;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
 }
 
-.ant-typography {
-    color: #00ff00 !important;
+.dark .ant-typography {
+    color: #f1f5f9 !important;
 }
 
-.ant-btn-primary {
-    background: transparent !important;
-    border-color: #00ff00 !important;
-    color: #00ff00 !important;
-}
-
-.ant-btn-primary:hover {
-    background: rgba(0, 255, 0, 0.1) !important;
-    border-color: #39ff14 !important;
-    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5) !important;
+.ant-btn {
+    border-radius: 8px !important;
 }

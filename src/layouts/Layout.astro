@@ -9,11 +9,11 @@ export interface Props {
     description?: string;
 }
 
-const { title, description = 'Juan Manuel Rodríguez - Senior Software Engineer' } = Astro.props;
+const { title, description = 'Juanma Rodríguez — Staff Software Engineer' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
@@ -24,120 +24,33 @@ const { title, description = 'Juan Manuel Rodríguez - Senior Software Engineer'
         <!-- Preload critical fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-        <!-- Cyber/Hacker Theme Meta -->
-        <meta name="theme-color" content="#0a0a0a" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="index, follow" />
+        <script is:inline>
+            // Theme initialization
+            const theme = (() => {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            })();
+
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+            window.localStorage.setItem('theme', theme);
+        </script>
     </head>
-    <body
-        class="tw:bg-terminal-bg tw:text-[#39ff14] tw:font-mono tw:antialiased tw:overflow-x-hidden"
-    >
-        <!-- Matrix Rain Background -->
-        <div id="matrix-bg" class="tw:fixed tw:inset-0 tw:opacity-10 tw:pointer-events-none tw:z-0">
-        </div>
+    <body class="tw:bg-white tw:dark:bg-slate-950 tw:text-slate-900 tw:dark:text-slate-100 tw:font-sans tw:antialiased tw:selection:bg-brand-500/30">
+        <div class="tw:fixed tw:inset-0 tw:bg-subtle-grid tw:pointer-events-none tw:z-0 tw:opacity-50 tw:dark:opacity-100"></div>
 
-        <!-- Scanning Line Effect -->
-        <div
-            class="tw:fixed tw:top-0 tw:left-0 tw:w-full tw:h-0.5 tw:bg-terminal-scan tw:animate-scan tw:opacity-30 tw:z-50"
-        >
-        </div>
-
-        <!-- Main Content -->
         <div class="tw:relative tw:z-10">
             <slot />
         </div>
-
-        <!-- Terminal Audio (optional) -->
-        <audio id="terminal-sound" preload="auto">
-            <source src="/assets/sounds/terminal-beep.mp3" type="audio/mp3" />
-        </audio>
-
-        <script>
-            // Matrix Rain Effect
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            document.getElementById('matrix-bg')?.appendChild(canvas);
-
-            canvas.style.position = 'absolute';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.zIndex = '1';
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            const chars =
-                'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?αβγδεζηθικλμνξοπρστυφχψω ΓΔΘΛΞΠΣΦΨΩ ∑∏√∞≈≠≤≥→←↑↓ ⇑⇓⇐⇒⇔ ↗↘↙↖ ⊕⊗⊥⊢⊨ ∧∨∀∃∄ ∈∉∅⊂⊃⊆⊇ ≡≜≈≃ ≔ ±÷× ⋮⋯⋱⋰ ░▒▓ █▌▐ ▀▄▁▂▃▄▅▆▇ █ ─│┌┐└┘├┤┬┴┼ ═║╔╗╚╝╠╣╦╩╬ ●○◆◇■□ ▲△▼▽ ▶▷◀◁ ◆♢★☆ ♣♦♥♠ ¥₩₽₿ ₪ ¢£€アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン ャュョッ ゛゜ ー・『』【】 ∑√∞→←↑↓ ≠≤≥ ≡⊕⊗ ∴∵';
-            const charArray = chars.split('');
-            const fontSize = 14;
-            const columns = canvas.width / fontSize;
-
-            const drops = Array(Math.floor(columns)).fill(1);
-
-            function drawMatrix() {
-                if (!ctx) return;
-                ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = '#00ff00';
-                ctx.font = `${fontSize}px JetBrains Mono, monospace`;
-
-                drops.forEach((y, index) => {
-                    const text = charArray[Math.floor(Math.random() * charArray.length)];
-                    const x = index * fontSize;
-
-                    ctx.fillText(text, x, y * fontSize);
-
-                    if (y * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[index] = 0;
-                    }
-                    drops[index]++;
-                });
-            }
-
-            setInterval(drawMatrix, 50);
-
-            // Terminal Sound Effects
-            let audioEnabled = false;
-
-            document.addEventListener('click', () => {
-                if (!audioEnabled) {
-                    const audio = document.getElementById('terminal-sound');
-                    if (audio) {
-                        audio.volume = 0.1;
-                        audioEnabled = true;
-                    }
-                }
-            });
-
-            // Glitch Effect on Scroll
-            let ticking = false;
-
-            function updateGlitch() {
-                const scrolled = window.scrollY;
-                const rate = scrolled * -0.5;
-
-                document.body.style.transform = `translateZ(0) translateY(${rate}px)`;
-                ticking = false;
-            }
-
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateGlitch);
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', requestTick);
-        </script>
     </body>
 </html>
